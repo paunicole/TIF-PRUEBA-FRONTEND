@@ -1,0 +1,32 @@
+body{
+    font-family: 'Reggae One', cursive;
+}
+h1{
+    font-size: 30px;
+}
+.conteiner{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    padding: 30px;
+    width: 40%;
+    align-items: center;
+    margin:110px auto;
+    border-radius: 5px;
+    background-color: rgb(146, 92, 92);
+}
+#myform{
+    display: inherit;
+    flex-direction: inherit;
+    align-items: center;
+}
+
+.inputs{
+    width: 240px;
+}
+#select{
+    display: inline;
+}
+button{
+    margin-top: 5px;
+}

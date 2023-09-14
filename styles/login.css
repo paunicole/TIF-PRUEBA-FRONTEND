@@ -1,0 +1,33 @@
+body{
+    font-family: 'Reggae One', cursive;
+}
+h1{
+    font-size: 30px;
+}
+#conteiner{
+    text-align: center;
+    display: flex;
+    flex-direction: column;      
+    /* align-items: center;            */
+    background-color: rgb(146, 92, 92);
+    width: 40%;
+    margin:150px auto;
+    border-radius: 5px;
+    padding: 30px ;
+}
+#bton{
+    margin: 5px;
+    width: 11rem;
+    background-color: black;
+    color:rgb(245, 245, 245);
+}
+a{
+    color:rgb(25, 18, 122) ;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;      
+    align-items: center;           
+    /* background-color: rgb(146, 92, 92); */
+}
