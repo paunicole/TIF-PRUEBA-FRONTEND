@@ -1,3 +1,36 @@
+window.addEventListener('load', function () {
+    getProfile();
+});
+
+function getProfile() {
+    const url = "http://127.0.0.1:5000/users/profile";
+    
+    fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json().then(data => {
+                // Mostrar la imagen de avatar
+                // if( data.avatar!==""){
+                let avatarLink=`../assets/${data.avatar}`;
+                const iconUser=document.getElementById("iconUser");
+                iconUser.src=avatarLink;             
+                document.getElementById("UserName").innerText = data.username;
+            });
+        } else {
+            return response.json().then(data => {
+                document.getElementById("message").innerHTML = data.message;
+            });
+        }
+    })
+    .catch(error => {
+        document.getElementById("message").innerHTML = "An error occurred.";
+    });
+}
+
+
 let categoryBox = document.querySelector(".categoryBox");
 let serverBtn = document.querySelector(".addCategory");
 
@@ -59,32 +92,32 @@ let addCategory = () => {
 
 // ======================== MODALES =========================
 // modal server
-const add= document.getElementById("add");
-const modalServer = document.querySelector('#modalServer');
-const clos=document.getElementById('btonS');
+// const add= document.getElementById("add");
+// const modalServer = document.querySelector('#modalServer');
+// const clos=document.getElementById('btonS');
 
-clos.addEventListener('click', () => {
-        modalServer.style.display="none";
+// clos.addEventListener('click', () => {
+//         modalServer.style.display="none";
         
-    });
+//     });
 
-add.addEventListener("click",(event)=>{
-  event.preventDefault();
-  modalServer.style.display = 'block';
+// add.addEventListener("click",(event)=>{
+//   event.preventDefault();
+//   modalServer.style.display = 'block';
   
-});
-// modal user
-const open = document.getElementById('open');
-const modal_container = document.getElementById('modal_container');
-const close = document.getElementById('close');
+// });
+// // modal user
+// const open = document.getElementById('open');
+// const modal_container = document.getElementById('modal_container');
+// const close = document.getElementById('close');
 
-open.addEventListener('click', () => {
-  modal_container.classList.add('show');  
-});
+// open.addEventListener('click', () => {
+//   modal_container.classList.add('show');  
+// });
 
-close.addEventListener('click', () => {
-  modal_container.classList.remove('show');
-});
+// close.addEventListener('click', () => {
+//   modal_container.classList.remove('show');
+// });
 
 // modal canal
 const btm=document.getElementById("newcanal")
@@ -136,3 +169,4 @@ input.addEventListener("keypress", (event) => {
 
 // conteiner.appendChild(div)
 document.body.appendChild(conteiner)
+

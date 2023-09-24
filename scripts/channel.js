@@ -102,6 +102,7 @@ if (categoryID) {
     catchTasks(categoryID);
 } else {
     console.log("No se ha proporcionado un ID de servidor.");
+    
 }
 
 

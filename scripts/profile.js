@@ -26,6 +26,7 @@ function getProfile() {
                 document.getElementById("first_name").innerText = data.first_name;
                 document.getElementById("last_name").innerText = data.last_name;
                 document.getElementById("birthdate").innerText = data.birthdate;
+
             });
         } else {
             return response.json().then(data => {

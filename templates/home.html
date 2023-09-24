@@ -41,13 +41,14 @@
                 
                 
             </div>
-            <div class="conteinerUser" id="open">
-                <p><img  id="iconUser" src="../assets/userIcon.png" width="42px" ></p>
+            <a id="sendProfile" href="profile.html">
+            <div class="conteinerUser" > <!--  id="open"  -->
+                <img  id="iconUser" src="../assets/userIcon.png" width="42px" >
                 <div class="account">
-                    <p>Username</p>
+                    <p id="UserName"></p>
                  </div>
                 
-            </div>
+            </div></a>
 
             <!-- MODAL: Crear un servidor -->
             <div class="modalServer" id="modalServer">
@@ -115,7 +116,7 @@
         </div> 
     </div>
 
-    <!-- MODAL: Actualizar usuario -->
+    <!-- MODAL: Actualizar usuario
     <div id="modal_container" class="modal-container">
         <div class="modal">
             <h2>Actualiza tus datos:</h2>
@@ -129,18 +130,18 @@
                 <input class="inputs" type="text" id="first_name" name="first_name" ><br>
                 <label for="last_name">Apellido</label><br>
                 <input class="inputs" type="text" id="last_name" name="last_name" ><br>
-                    <!-- <label for="password">Contraseña</label><br>
-                <input class="inputs" id="password" name="password" type="password" ><br> -->
-                
+                   <label for="password">Contraseña</label><br>
+                <input class="inputs" id="password" name="password" type="password" ><br>
                 <label for="avatar">Img</label>
                 <input class="inputs" id="avatar" name="avatar" type="file"><br><br>
                 <button id="btonUpdateUser" type="submit">Enviar</button>
             </form><br>
             <button id="close">Cerrar</button>
         </div>
-    </div>
+    </div> 
+    -->
 
-    <a href="profile.html">Mi perfil</a>
+    <!-- <a href="profile.html">Mi perfil</a> -->
 
     <script src="/scripts/home.js"></script>
     <script src="/scripts/channel.js"></script>
