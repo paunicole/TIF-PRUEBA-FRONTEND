@@ -10,20 +10,20 @@ let catchServers = () => {
             
             // Crear elemento de texto de servidor
             let taskText = document.createElement("a");
-            taskText.classList.add("categoryText");
-            taskText.setAttribute("href", `channels.html?server_id=${server.server_id}`);
+            taskText.classList.add("serverText");
+            taskText.setAttribute("href", `home.html?server_id=${server.server_id}`);
             taskText.setAttribute("data-category-id", server.server_id);
             taskText.textContent = server.name;
 
             // Crear descripcion
-            let dueTaskSpan = document.createElement("span");
-            let categoryDescription = `Descripción: ${server.description}`;
-            dueTaskSpan.textContent = categoryDescription;
-            dueTaskSpan.classList.add("dueTaskSpan");
+            //let dueTaskSpan = document.createElement("span");
+            //let categoryDescription = `Descripción: ${server.description}`;
+            //dueTaskSpan.textContent = categoryDescription;
+            //dueTaskSpan.classList.add("dueTaskSpan");
             
             // Añadir elementos
             taskText.appendChild(document.createElement("br"));
-            taskText.appendChild(dueTaskSpan);
+            //taskText.appendChild(dueTaskSpan);
             categoryBox.appendChild(taskText);
         }
 
@@ -34,7 +34,6 @@ let catchServers = () => {
 };
 
 catchServers();
-
 
 // Agrega un nuevo servidor
 let addCategory = () => {
@@ -57,3 +56,83 @@ let addCategory = () => {
     })
     .catch(err => console.log(err));
 }
+
+// ======================== MODALES =========================
+// modal server
+const add= document.getElementById("add");
+const modalServer = document.querySelector('#modalServer');
+const clos=document.getElementById('btonS');
+
+clos.addEventListener('click', () => {
+        modalServer.style.display="none";
+        
+    });
+
+add.addEventListener("click",(event)=>{
+  event.preventDefault();
+  modalServer.style.display = 'block';
+  
+});
+// modal user
+const open = document.getElementById('open');
+const modal_container = document.getElementById('modal_container');
+const close = document.getElementById('close');
+
+open.addEventListener('click', () => {
+  modal_container.classList.add('show');  
+});
+
+close.addEventListener('click', () => {
+  modal_container.classList.remove('show');
+});
+
+// modal canal
+const btm=document.getElementById("newcanal")
+const modal_conta = document.getElementById('modalCanal');
+const cv =document.getElementById('btonC');
+
+cv.addEventListener('click', () => {
+    //   modal_container.classList.add('show'); 
+        modal_conta.style.display="none";
+        
+    });
+
+
+btm.addEventListener('click', () => {
+//   modal_container.classList.add('show'); 
+    modal_conta.style.display="block";
+    
+});
+
+// ====================== CHAT ============================
+let input= document.getElementById("input")
+let boton= document.getElementById("bton")
+
+let ul= document.getElementById("text")
+let conteiner= document.getElementsByClassName("conteinerChat")
+let div=document.getElementById("chat")
+
+
+boton.addEventListener("click", () => {
+    const mensaje = input.value.trim();
+
+      if (mensaje !== "") {
+        let element= document.createElement("li")
+    element.innerHTML+=input.value
+    element.setAttribute("id","item")
+    // lo agregamos como hijo y comienza a tomar los valor que tiene li
+    // en la hoja de estilos
+    ul.appendChild(element)
+    console.log(input.value)
+    input.value=""
+      }
+});
+
+input.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        boton.click();
+      }
+});
+
+// conteiner.appendChild(div)
+document.body.appendChild(conteiner)

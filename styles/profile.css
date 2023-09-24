@@ -14,7 +14,7 @@ h1{
     padding: 30px;
     width: 40%;
     align-items: center;
-    margin:110px auto;
+    margin: 50px auto;
     border-radius: 5px;
     background-color: rgb(146, 92, 92);
 }
@@ -35,4 +35,28 @@ h1{
 
 button{
     margin-top: 5px;
+}
+
+.my-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px; /* Margen horizontal entre los botones */
+}
+
+.my-button:hover {
+background-color: #45a049;
+}
+
+.my-button:active {
+background-color: #3e8e41;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
 }

@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="/styles/profile.css">
 </head>
 <body>
-    <div id="message">
-        <h1>User Profile</h1>
-        <p><strong>Username:</strong> <span id="username"></span></p>
+    <!-- MI PERFIL -->
+    <div id="message" class="conteiner">
+        <h1>Mi Perfil</h1>
+        <img id="avatar" width="120">
+        <p><strong>Usuario:</strong> <span id="username"></span></p>
         <p><strong>Email:</strong> <span id="email"></span></p>
-        <p><strong>First Name:</strong> <span id="first_name"></span></p>
-        <p><strong>Last Name:</strong> <span id="last_name"></span></p>
+        <p><strong>Nombre:</strong> <span id="first_name"></span></p>
+        <p><strong>Apellido:</strong> <span id="last_name"></span></p>
+        <p><strong>Cumpleaños:</strong> <span id="birthdate"></span></p>
     </div>
     
-    <button id="logout">Logout</button>
-    
-    <script src="scripts/profile.js"></script>
+    <!-- BOTONES -->
+    <div class="buttons">
+        <button id="edit" class="my-button">Editar Perfil</button>
+        <!-- <a href="edit_profile.html" class="my-button">Editar Perfil</a> -->
+        <button id="logout" class="my-button">Cerrar sesión</button>
+    </div>
+
+    <script src="/scripts/profile.js"></script>
 </body>
 </html>

@@ -7,11 +7,143 @@
     <title>Home</title>
 </head>
 <body>
-    <button class="addCategory">Crear Servidor</button>
-    <div class="todoApp-Container">
-        <div class="categoryBox"></div>
+
+    <div class="main-container">
+
+        <!-- COLUMNA SERVIDORES -->
+        <div class="conteinerServers">
+            <div class="servers">
+                <!-- Mostramos los servidores del usuario logueado -->
+                <div class="conteiner-servers item-server">
+                    <div class="div-servers">
+                        <div class="categoryBox"></div>
+                    </div>
+                    <!--
+                    <ul class="servidores">
+                        <li id="nameServidor">servidor 1</li>
+                         <li>2</li>
+                        <li>3 </li>
+                        <li>4 </li> 
+
+                    </ul>
+                    -->
+                    <!-- <ul class="edicion"> 
+                        <li><img class="editServi" id="call" src="tres-puntos.png" width="15px"></li>
+                        <li><img class="editServi" src="tres-puntos.png" width="15px"></li>
+                    </ul> -->
+                </div>
+                <div class="conteiner-icons item-server">
+                    <ul>
+                        <li><img class="icono agregar" id="add" src="../assets/mas.png" width="32px" ></li>
+                        <li><img class="icono buscar" id="explore" src="../assets/explorar.png" alt="" width="32px"></li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            <div class="conteinerUser" id="open">
+                <p><img  id="iconUser" src="../assets/userIcon.png" width="42px" ></p>
+                <div class="account">
+                    <p>Username</p>
+                 </div>
+                
+            </div>
+
+            <!-- MODAL: Crear un servidor -->
+            <div class="modalServer" id="modalServer">
+                <div class="modalS">  
+                    <h2>Crea tu Servidor:</h2>
+                    <hr><br>
+                    <form id="formAddServer" method="post">
+                        
+                        <label for="nameS">Nombre: </label><br>
+                        <input  type="text" id="nameS" name="nameS" ><br>
+                        <label for="descripcionS">Descripcion: </label><br>
+                        <input  type="text" id="descripcionS" name="descripcionS" ><br>
+                            
+                        <button id="btonAddServer" type="submit">Enviar</button>
+                    </form>
+                    <button id="btonS">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COLUMNA CANALES -->
+        <div class="conteinerCanales">
+            <h2>Canales:</h2>
+            <div class="canales items-canal">
+                <!-- <ul>
+                     
+                </ul> -->
+                <div class="taskBox"></div>
+            </div>
+            <div class="newCanal items-canal">
+                <button id="newcanal">Añadir un canal</button>
+            </div>
+        </div>
+
+        <!-- MODAL: Crear un canal -->
+        <div id="modalCanal" class="modalCanal">
+            <div class="modalC">
+                <h2>Crea tu canal:</h2>
+                <hr><br>
+                <form id="formAddCanal" method="post">
+                    <label for="name">Nombre</label><br>
+                    <input class="inputs" type="name" id="name" name="text"><br>
+                    <label for="descripcion">descripcion</label><br>
+                    <input class="inputs" type="text" id="descripcion" name="descripcion" ><br>
+                    <button id="btonModalCanal" type="submit">Enviar</button>
+                </form><br>
+                <button id="btonC">Cerrar</button>
+            </div>
+        </div>
+        
+        <!-- COLUMNA CHAT -->
+        <div class="conteinerChat">
+            <div id="chat">
+                <!-- <ul id="text">
+                    <li id="item">Hi...</li>
+                </ul> -->
+                <div class="chatBox"></div>
+             </div>
+             <div id="sub-content">
+                <!-- <input id="input" name="ingreso" type="text" placeholder="Escribe aqui..."> -->
+                <textarea id="input" name="ingreso" type="text" placeholder="Escribe aqui..." ></textarea>
+                <button id="bton">Enviar</button>
+            </div>
+        </div> 
     </div>
-    
+
+    <!-- MODAL: Actualizar usuario -->
+    <div id="modal_container" class="modal-container">
+        <div class="modal">
+            <h2>Actualiza tus datos:</h2>
+            <hr><br>
+            <form id="formUpdateUser" method="post">
+                <label for="email">Correo electronico</label><br>
+                <input class="inputs" type="email" id="email" name="email"><br>
+                <label for="username">Nombre de usuario</label><br>
+                <input class="inputs" type="text" id="username" name="username" ><br>
+                <label for="first_name">Nombre</label><br>
+                <input class="inputs" type="text" id="first_name" name="first_name" ><br>
+                <label for="last_name">Apellido</label><br>
+                <input class="inputs" type="text" id="last_name" name="last_name" ><br>
+                    <!-- <label for="password">Contraseña</label><br>
+                <input class="inputs" id="password" name="password" type="password" ><br> -->
+                
+                <label for="avatar">Img</label>
+                <input class="inputs" id="avatar" name="avatar" type="file"><br><br>
+                <button id="btonUpdateUser" type="submit">Enviar</button>
+            </form><br>
+            <button id="close">Cerrar</button>
+        </div>
+    </div>
+
+    <a href="profile.html">Mi perfil</a>
+
+    <script src="/scripts/home.js"></script>
+    <script src="/scripts/channel.js"></script>
+    <script src="/scripts/chat.js"></script>
 </body>
-<script src="/scripts/home.js"></script>
 </html>

@@ -1,9 +1,12 @@
 body{
     font-family: 'Reggae One', cursive;
+    background-color: bisque;
 }
+
 h1{
     font-size: 30px;
 }
+
 #conteiner{
     text-align: center;
     display: flex;
@@ -15,12 +18,14 @@ h1{
     border-radius: 5px;
     padding: 30px ;
 }
+
 #bton{
     margin: 5px;
     width: 11rem;
     background-color: black;
     color:rgb(245, 245, 245);
 }
+
 a{
     color:rgb(25, 18, 122) ;
 }

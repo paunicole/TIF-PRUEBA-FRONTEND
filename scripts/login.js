@@ -21,9 +21,7 @@ function login() {
         if (response.status === 200) {
             // Redirect to profile page if login is successful
             return response.json().then(data => {
-                // window.location.href = "profile.html"; 
-                // window.location.href = "welcome.html";
-                window.location.href="Main.html"
+                window.location.href = "home.html";
             });
         } else {
             return response.json().then(data => {

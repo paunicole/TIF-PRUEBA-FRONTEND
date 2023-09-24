@@ -1,111 +1,378 @@
-body{
+*{
+    /* height: 100vh;
+    width: 100%; */
     margin: 0;
-    background-color: rgb(51, 50, 50);
+    padding: 0;
+    box-sizing: border-box;
+
+
+  }
+
+.main-container{
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  position: sticky;
 }
 
-.todoApp-Container{
+ul{
+  list-style: none;
+}
+
+.conteinerServers{
+    background-color:  rgb(26, 86, 104);
+    height: inherit;
+    color: white ;
+    width: 9%;
+    /* padding-top: 14px; */
+    /* align-self: center; */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 99%;
-    height: 100vh;
-    z-index: 99;
+    flex-direction: column;
+    min-width: 60px;
+    /* justify-content: center; */
 }
 
-.modal-container{
-    position: absolute;
+.servers{
+    height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* height: 90vh; */
+}
+
+/* contenedor de servidores */
+.item-server{
+    /* padding: 7px; */
+    /* align-self: center; */
+    /* display: flex; */
+    display: flex;
+    justify-content: flex-start;
+    
+}
+/*  */
+
+.conteiner-servers{
+  padding: 5px ;
+}
+.conteiner-servers .servidores .servi{
+    display: inline;
+    font-size: 18px;
+}
+
+.edicion .editServi{
+    display: flex;
+    flex-direction: column;
+    padding-top: 3px;
+    padding-left: 3px;
+    cursor: pointer;
+}
+
+.conteinerUser{
+    height: 10vh;
+    background-color: rgb(153, 86, 131);
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+}
+
+
+/* icon + */
+
+.conteiner-icons{
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+.icono:hover{
+    cursor: pointer;
+    width: 38px;;
+
+}
+.icono{
+    width:32px;
+}
+
+#iconUser{
+    margin-top: -20px;
+}
+.conteinerUser:hover{
+    cursor: pointer;
+}
+
+
+  /* contenedor de canales y sus hijos */
+.conteinerCanales{
+    background-color: rgb(51, 52, 131);
+    color: white ;
+    width: 15%;
+    padding-top: 15px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    padding-left: 5px;
+    min-width: 200px;
+    height: 100vh;
+    position: sticky;
+    /* height: inherit; */
+
+}
+.items-canal{
+    align-self: center;
+}
+.canales{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* height: 10vh; */
+}
+
+#newcanal:hover{
+  cursor: pointer;
+}
+
+.newCanal{
+  height: 10vh;
+}
+
+/* chat */
+
+.conteinerChat{
+    width: 80%;
+    height: inherit;
+    min-width: 500px;
+    /* background-color:#000; */
+    /* background-color: rgb(196, 216, 216); */
+    position:sticky; 
+}
+
+#chat{
+    display: flex;
+    flex-direction: column;
+    /* margin:  50px auto; */
+    height: 93vh;
+    background-image: url("../assets/pngwing.png");
+    background-repeat: no-repeat; 
+    background-position: center;
+}
+
+input{
+    /* position: absolute; */
+    width: 150px;
+}
+
+#text{
+    /* display: flex;
+    flex-direction: column; */
+    display: inline;
+    /* justify-content: flex-start; */
+}
+
+#item{
+    list-style-type: none;
+    color:rgb(2, 2, 2);
+    background-color: #e4dddd;
+    opacity: 0.59;
+    border-radius: 3px;
+    padding-left: 15px ;
+    margin: 6px 0 6px 6px;
+    /* text-align: center; */
+}
+
+#sub-content{
+    margin-left:10px;
+    height: 7vh;
+    justify-content: flex-end;
+    /* justify-content: end; */
+}
+
+#input{
+    width: 00px;
+    min-width: 400px;
+}
+
+/* modal server */
+.modalServer , .modalCanal{
+    display: none; 
+  position: fixed ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80%; /* Altura máxima de la ventana emergente */
+    width: 300px;
+    padding: 20px;
+    background-color: antiquewhite;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    z-index: 1000;
+    color:#000
+}
+
+.modalServer .modalS{
+    text-align: center;
+}
+/* modal user */
+
+.modal-container {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;  
     top: 0;
-    width: 100%;
+    left: 0;
     height: 100vh;
-    z-index: 99;
-    display: flex;
-    justify-content: center;
+    width: 100vw;
+    transition: opacity 0.3s ease;
+}
+  
+.show {
+pointer-events: auto;
+opacity: 1;
+}
+
+.modal {
+background-color: antiquewhite;
+width:400px;
+max-width: 80%;
+padding: 30px 50px;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+text-align: center;
+}
+
+.modal h1 {
+margin: 0;
+}
+
+.modal p {
+opacity: 0.7;
+font-size: 14px;
+}
+
+#newcanal{
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+  background-color: #000;
+  margin-bottom: 4px;
+}
+  /* modal canal */
+
+/* .modalCanal{
+
+    display: none; 
+    position: fixed ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80%; 
+    width: 300px;
+    padding: 20px;
+    background-color: antiquewhite;
+    flex-direction: column;
     align-items: center;
-    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    z-index: 1000;
+  } */
+  /* CONTENIDO */
+.modalCanal .modalC {
+    text-align: center;
+  }
+
+
+#close , #btonC, #btonS{
+    border-radius: 5px;
+    margin-top: 6px;
+    padding: 7px;
+    color:#fff;
+    background-color: #011640;
+}
+
+/* SERVIDORES Y CANALES */
+.todoApp-Container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99%;
+  height: 100vh;
+  z-index: 99;
 }
 
 .taskBox{
-    padding: 30px;
-    width: 500px;
-    max-height: 1000px;
+  padding: 5px;
+  width: 200px;
+  max-height: 1000px;
 }
 
-
-.taskText{
-   width: 100%;
-   background-color: rgb(68, 67, 67);
-   font-size: 20px;
-   font-family: 'Prompt', sans-serif;
-   margin: 10px 0;
-   padding: 10px;
-   border-radius: 20px;
-   transition: .5s;
-   cursor: pointer;
-   color: white;
+.categoryBox{
+  padding: 5px;
+  width: 120px;
+  max-height: 1000px;
 }
 
-.categoryText{
-    display: block;
-    width: 100%;
-    background-color: rgb(68, 67, 67);
-    font-size: 20px;
-    font-family: 'Prompt', sans-serif;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 20px;
-    transition: .3s;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    transition: .5s;
+.chatBox{
+  padding: 5px;
+  width: 120px;
+  max-height: 1000px;
 }
 
-.categoryText:hover{
-    background-color: aquamarine;
-    color: black;
-    transition: .5s;
+.channelText{
+ width: 100%;
+ background-color: rgba(107, 51, 238, 0.267);
+ font-size: 15px;
+ font-family: 'Prompt', sans-serif;
+ margin: 10px 0;
+ padding: 10px;
+ border-radius: 10px;
+ transition: .5s;
+ cursor: pointer;
+ color: white;
 }
 
-.taskText:hover{
-    background-color: aquamarine;
-    color: black;
-    transition: .5s;
+.serverText{
+  display: block;
+  width: 100%;
+  background-color: rgba(26, 187, 216, 0.247);
+  font-size: 15px;
+  font-family: 'Prompt', sans-serif;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: .5s;
+}
+
+.serverText:hover .taskCountCircle {
+  background-color: #444343;  /* Add the styles you want when hovering over .categoryText */
+  color: white;
+}
+
+.serverText:hover{
+  background-color: aquamarine;
+  color: black;
+  transition: .5s;
+}
+
+.channelText:hover{
+  background-color: rgba(123, 125, 255, 0.733);
+  color: black;
+  transition: .5s;
 }
 
 .dueTaskSpan{
-    font-size: 15px;
-}
-
-
-.ModalBox{
-    z-index: 99;
-    width: 500px;
-    height: 500px;
-    background-color:  #444343;
-    padding: 10px;
-    overflow-y: scroll;
-}
-
-.subTaskLabel{
-    background-color: #7fffd4;
-    border-radius: 20px;
-    padding: 5px;
-}
-
-.taskCountCircle {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 20px;
-    background-color: #7fffd4;
-    color: black;
-    margin-left: 5px;
-}
-
-.categoryText:hover .taskCountCircle {
-    background-color: #444343;  /* Add the styles you want when hovering over .categoryText */
-    color: white;
+  font-size: 15px;
 }
