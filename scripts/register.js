@@ -42,7 +42,8 @@ function register() {
         if (response.status === 200) {
             // Redirect to profile page if login is successful
             return response.json().then(data => {
-                window.location.href = "welcome.html";
+                // window.location.href = "welcome.html";
+                window.location.href="Main.html"
                 // window.location.href="profile.html"; 
                 //document.getElementById("message").innerHTML = "EXITO!";
             });
