@@ -95,11 +95,12 @@ ul{
     /* justify-content: center; */
     align-items: center;
   }
+
 .icono:hover{
     cursor: pointer;
     width: 38px;;
-
 }
+
 .icono{
     width:32px;
 }
@@ -305,7 +306,7 @@ font-size: 14px;
     background-color: #011640;
 }
 
-/* SERVIDORES Y CANALES */
+/* ========= SERVIDORES, CANALES, MENSAJES ============= */
 .todoApp-Container{
   display: flex;
   justify-content: center;
@@ -315,35 +316,13 @@ font-size: 14px;
   z-index: 99;
 }
 
-.taskBox{
-  padding: 5px;
-  width: 200px;
-  max-height: 1000px;
-}
+/* ===== SERVERS ===== */
 
-.categoryBox{
+
+.serverBox{
   padding: 5px;
   width: 120px;
   max-height: 1000px;
-}
-
-.chatBox{
-  padding: 5px;
-  width: 120px;
-  max-height: 1000px;
-}
-
-.channelText{
- width: 100%;
- background-color: rgba(107, 51, 238, 0.267);
- font-size: 15px;
- font-family: 'Prompt', sans-serif;
- margin: 10px 0;
- padding: 10px;
- border-radius: 10px;
- transition: .5s;
- cursor: pointer;
- color: white;
 }
 
 .serverText{
@@ -373,12 +352,49 @@ font-size: 14px;
   transition: .5s;
 }
 
+/* ===== CHANNELS ===== */
+.channelBox{
+  padding: 5px;
+  width: 200px;
+  max-height: 1000px;
+}
+
+.channelText{
+  display: block;
+  width: 100%;
+  background-color: rgba(107, 51, 238, 0.267);
+  font-size: 15px;
+  font-family: 'Prompt', sans-serif;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .5s;
+  cursor: pointer;
+  color: white;
+}
+
 .channelText:hover{
   background-color: rgba(123, 125, 255, 0.733);
   color: black;
   transition: .5s;
 }
 
-.dueTaskSpan{
-  font-size: 15px;
+/* ===== MESSAGES ===== */
+.chatBox{
+  padding: 5px;
+  width: 500px;
+  max-height: 1000px;
 }
+
+.chatText{
+  width: 100%;
+  background-color: rgb(107, 51, 238);
+  font-size: 15px;
+  font-family: 'Prompt', sans-serif;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .5s;
+  cursor: pointer;
+  color: white;
+ }
