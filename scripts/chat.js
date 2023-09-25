@@ -13,7 +13,8 @@ let catchChats = (channelID) => {
         if (data.length === 0) {
             // Si no hay mensajes, muestra un mensaje de advertencia
             const noMessagesMessage = document.createElement("p");
-            noMessagesMessage.textContent = "No hay mensajes. Escribe uno...";
+            noMessagesMessage.classList.add("noMessages");
+            noMessagesMessage.textContent = "Aún no hay mensajes en este canal";
             chatBox.appendChild(noMessagesMessage);
         } else {
             // Si hay mensajes, crea contenedores para cada uno

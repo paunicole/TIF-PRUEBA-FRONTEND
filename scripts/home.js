@@ -40,6 +40,7 @@ let catchServers = () => {
         if (data.length === 0) {
             // No se encontraron servidores, muestra un mensaje
             const noServersMessage = document.createElement("p");
+            noServersMessage.classList.add("noServers");
             noServersMessage.textContent = "No se encontraron servidores.";
             serverBox.appendChild(noServersMessage);
         } else {

@@ -311,6 +311,13 @@ input{
   transition: .5s;
 }
 
+.noServers {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000; /* Cambia el color según tu preferencia */
+  margin: 10px 0;
+}
+
 /* ===== CHANNELS ===== */
 .channelBox{
   padding: 5px;
@@ -336,6 +343,13 @@ input{
   background-color: rgba(123, 125, 255, 0.733);
   color: black;
   transition: .5s;
+}
+
+.noChannels {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000; /* Cambia el color según tu preferencia */
+  margin: 10px 0;
 }
 
 /* ===== MESSAGES ===== */
@@ -377,4 +391,11 @@ input{
   border: 1px solid #ccc;
   padding: 5px 10px;
   border-radius: 5px;
+}
+
+.noMessages {
+  font-size: 30px;
+  font-style: italic;
+  color: #888; /* Cambia el color según tu preferencia */
+  margin: 10px 0;
 }

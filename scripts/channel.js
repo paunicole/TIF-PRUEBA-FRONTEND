@@ -13,7 +13,8 @@ let catchChannels = (serverID) => {
         if (data.length === 0) {
             // Si no hay canales, muestra un mensaje de advertencia
             const noChannelsMessage = document.createElement("p");
-            noChannelsMessage.textContent = "Aún no hay canales, crea uno.";
+            noChannelsMessage.classList.add("noChannels");
+            noChannelsMessage.textContent = "Aún no hay canales en este servidor";
             channelBox.appendChild(noChannelsMessage);
         } else {
             // Si hay canales, crea contenedores para cada uno
