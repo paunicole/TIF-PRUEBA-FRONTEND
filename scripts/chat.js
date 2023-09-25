@@ -27,12 +27,24 @@ let catchChats = (channelID) => {
 
 let createChatContainer = (chat) =>{
 
-    /// Crear elemento de texto para el nombre de usuario
+    // Crear elemento de texto para el avatar
+    //let chatAvatar = document.createElement("span");
+    //chatAvatar.textContent = chat.user_id["avatar"];
+
+    let chatAvatar = document.createElement("img");
+    chatAvatar.classList.add("chatAvatar");
+    let formattedAvatar = `/assets/${chat.user_id["avatar"]}`;
+    chatAvatar.src = formattedAvatar;
+    chatAvatar.alt = "Avatar";
+    
+    // Crear elemento de texto para el nombre de usuario
     let chatUser = document.createElement("span");
-    chatUser.textContent = chat.user_id;
+    chatUser.classList.add("chatUsername");
+    chatUser.textContent = chat.user_id["username"];
     
     // Crear elemento de texto para la fecha
     let chatDate = document.createElement("span");
+    chatDate.classList.add("chatDate");
     let originalDate = new Date(chat.date_time); // Convertir la fecha de texto a objeto Date 
     let day = originalDate.getDate();            // Obtener el día del mes
     let month = originalDate.getMonth();         // Obtener el mes
@@ -48,6 +60,7 @@ let createChatContainer = (chat) =>{
     chatText.textContent = chat.message;
 
     // Añadir elementos
+    chatBox.appendChild(chatAvatar);
     chatBox.appendChild(chatUser);
     chatBox.appendChild(chatDate);
     chatBox.appendChild(chatText);

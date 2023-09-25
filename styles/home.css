@@ -358,3 +358,23 @@ input{
   cursor: pointer;
   color: white;
  }
+
+.chatAvatar {
+  width: 50px;
+}
+
+.chatUsername {
+  font-weight: bold;
+  font-size: 16px;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+.chatDate {
+  font-size: 12px;
+  color: #666;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
