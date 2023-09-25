@@ -4,6 +4,7 @@ const serverID = urlParams.get("server_id");
 console.log("holaaa channel")
 
 let channelBox = document.querySelector(".channelBox");
+let channelBtnAdd = document.querySelector(".btonAddChannel");
 
 let catchChannels = (serverID) => {
     let url = `http://127.0.0.1:5000/channels/?server_id=${serverID}`;
@@ -22,6 +23,8 @@ let catchChannels = (serverID) => {
                 createChannelContainer(channel);
             });
         }
+
+        channelBtnAdd.addEventListener("click", () => addChannel());
     })
 
     .catch(err => console.log(err));
@@ -42,6 +45,38 @@ let createChannelContainer = (channel) =>{
     // Añadir elementos
     channelText.appendChild(document.createElement("br"));
     channelBox.appendChild(channelText);
+}
+
+let addChannel = () => {
+    // Obtener el elemento input por su id
+    var inputNameC = document.getElementById("nameC");
+    var inputDescriptionC = document.getElementById("descriptionC");
+
+     // Obtener el valor del input
+    var valorNameC = inputNameC.value;
+    var valorDescriptionC = inputDescriptionC.value;
+
+    console.log(valorNameC)
+    console.log(valorDescriptionC)
+
+    let channel = {
+        name: valorNameC,
+        description: valorDescriptionC,
+        server_id: serverID
+    };
+
+    fetch("http://127.0.0.1:5000/channels/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(channel)
+    })
+    .then(res => res.json())
+    .then(data => {
+        location.reload();
+    })
+    .catch(err => console.log(err));
 }
 
 // CONTROL
