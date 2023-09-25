@@ -268,17 +268,15 @@ input{
 }
 
 /* ========= SERVIDORES, CANALES, MENSAJES ============= */
+
 .todoApp-Container{
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 99%;
   height: 100vh;
   z-index: 99;
 }
 
 /* ===== SERVERS ===== */
-
 
 .serverBox{
   padding: 5px;
@@ -342,7 +340,7 @@ input{
 
 /* ===== MESSAGES ===== */
 .chatBox{
-  padding: 5px;
+  padding: 50px;
   width: 500px;
   max-height: 1000px;
 }
@@ -353,6 +351,7 @@ input{
   font-size: 15px;
   font-family: 'Prompt', sans-serif;
   margin: 10px 0;
+  margin-bottom: 30px;
   padding: 10px;
   border-radius: 10px;
   transition: .5s;
