@@ -1,3 +1,5 @@
+// ======================== MOSTRAR MI PERFIL =========================
+
 window.addEventListener('load', function () {
     getProfile();
 });
@@ -32,20 +34,31 @@ function getProfile() {
     });
 }
 
+// ======================== MOSTRAR Y CREAR SERVIDORES =========================
 
 let serverBox = document.querySelector(".serverBox");
+let serverBtnAdd = document.querySelector(".btonAddServer");
 
 let catchServers = () => {
-    fetch("http://127.0.0.1:5000/servers/") //Extraer datos
+    
+    let url = `http://127.0.0.1:5000/servers/`;
+    fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
     .then(res => res.json())
-    .then(async data => {                   // 'data' contendrá los datos JSON obtenidos del servidor.
+    .then(async data => {
         if (data.length === 0) {
+
             // No se encontraron servidores, muestra un mensaje
             const noServersMessage = document.createElement("p");
+            noServersMessage.classList.add("noServers");
             noServersMessage.textContent = "No se encontraron servidores.";
             serverBox.appendChild(noServersMessage);
+
         } else {
             for (let server of data) {  // iteramos los servidores
+
                 // Crear elemento de texto para el nombre del servidor
                 let serverText = document.createElement("a");
                 serverText.classList.add("serverText");
@@ -59,21 +72,52 @@ let catchServers = () => {
             }
         }
 
+        serverBtnAdd.addEventListener("click", () => addServer());
     })
     .catch(err => console.log(err));
 };
 
 catchServers();
 
+let addServer = () => {
+    
+    // Obtener el elemento input por su id
+    var inputNameS = document.getElementById("nameS");
+    var inputDescriptionS = document.getElementById("descriptionS");
+
+     // Obtener el valor del input
+    var valorNameS = inputNameS.value;
+    var valorDescriptionS = inputDescriptionS.value;
+
+    let server = {
+        name: valorNameS,
+        description: valorDescriptionS,
+    };
+
+    fetch("http://127.0.0.1:5000/servers/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(server),
+        credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(data => {
+        location.reload();
+    })
+    .catch(err => console.log(err));
+}
+
 // ======================== MODALES =========================
-// modal server
+
+// MODAL Server
 const add= document.getElementById("add");
 const modalServer = document.querySelector('#modalServer');
 const clos=document.getElementById('btonS');
 
 clos.addEventListener('click', () => {
         modalServer.style.display="none";
-        
     });
 
 add.addEventListener("click",(event)=>{
@@ -81,7 +125,7 @@ add.addEventListener("click",(event)=>{
   modalServer.style.display = 'block';  
 });
 
-// modal canal
+// MODAL Channel
 const btm=document.getElementById("newcanal")
 const modal_conta = document.getElementById('modalCanal');
 const cv =document.getElementById('btonC');
@@ -92,7 +136,6 @@ cv.addEventListener('click', () => {
         
     });
 
-
 btm.addEventListener('click', () => {
 //   modal_container.classList.add('show'); 
     modal_conta.style.display="block";
@@ -100,6 +143,7 @@ btm.addEventListener('click', () => {
 });
 
 // ====================== CHAT ============================
+
 let input= document.getElementById("input")
 let boton= document.getElementById("bton")
 

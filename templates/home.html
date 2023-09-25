@@ -10,13 +10,15 @@
 
     <div class="main-container">
 
-        <!-- COLUMNA SERVIDORES -->
+        <!-- ================== COLUMNA SERVIDORES ================== -->
+
         <div class="conteinerServers">
             <div class="servers">
+                
                 <!-- Mostramos los servidores del usuario logueado -->
                 <div class="conteiner-servers item-server">
                     <div class="div-servers">
-                        <!-- Clase de JavaScript -->
+                        <!-- Clase de JavaScript: Trae todos los Servidores de un Usuario -->
                         <div class="serverBox"></div>
                     </div>
                     <!--
@@ -33,15 +35,18 @@
                         <li><img class="editServi" src="tres-puntos.png" width="15px"></li>
                     </ul> -->
                 </div>
+
+                <!-- Botones servidor -->
                 <div class="conteiner-icons item-server">
                     <ul>
                         <li><img class="icono agregar" id="add" src="../assets/mas.png" width="32px" ></li>
                         <li><img class="icono buscar" id="explore" src="../assets/explorar.png" alt="" width="32px"></li>
                     </ul>
                 </div>
-                
-                
+
             </div>
+
+            <!-- Ir a Mi Perfil -->
             <a id="sendProfile" href="profile.html">
             <div class="conteinerUser" > <!--  id="open"  -->
                 <img  id="iconUser" src="../assets/userIcon.png" width="42px" >
@@ -56,14 +61,14 @@
                 <div class="modalS">  
                     <h2>Crea tu Servidor:</h2>
                     <hr><br>
-                    <form id="formAddServer" method="post">
+                    <form id="formAddServer"> <!-- method="post"-->
                         
                         <label for="nameS">Nombre: </label><br>
                         <input  type="text" id="nameS" name="nameS" ><br>
                         <label for="descripcionS">Descripcion: </label><br>
-                        <input  type="text" id="descripcionS" name="descripcionS" ><br>
+                        <input  type="text" id="descriptionS" name="descripcionS" ><br>
                             
-                        <button id="btonAddServer" type="submit">Enviar</button>
+                        <button class="btonAddServer" type="button">Enviar</button>
                     </form>
                     <button id="btonS">Cerrar</button>
                 </div>
@@ -71,14 +76,12 @@
 
         </div>
 
-        <!-- COLUMNA CANALES -->
+        <!-- ================== COLUMNA CANALES ================== -->
+
         <div class="conteinerCanales">
             <h2>Canales:</h2>
             <div class="canales items-canal">
-                <!-- <ul>
-                     
-                </ul> -->
-                <!-- Clase de JavaScript -->
+                <!-- Clase de JavaScript: Trae todos los Canales de un Servidor -->
                 <div class="channelBox"></div>
             </div>
             <div class="newCanal items-canal">
@@ -91,23 +94,22 @@
             <div class="modalC">
                 <h2>Crea tu canal:</h2>
                 <hr><br>
-                <form id="formAddCanal" method="post">
+                <form id="formAddCanal">
                     <label for="name">Nombre</label><br>
-                    <input class="inputs" type="name" id="name" name="text"><br>
+                    <input class="inputs" type="name" id="nameC" name="text"><br>
                     <label for="descripcion">descripcion</label><br>
-                    <input class="inputs" type="text" id="descripcion" name="descripcion" ><br>
-                    <button id="btonModalCanal" type="submit">Enviar</button>
+                    <input class="inputs" type="text" id="descriptionC" name="descripcion" ><br>
+                    <button class="btonAddChannel" type="button">Enviar</button>
                 </form><br>
                 <button id="btonC">Cerrar</button>
             </div>
         </div>
         
-        <!-- COLUMNA CHAT -->
+        <!-- ==================== COLUMNA CHAT ==================== -->
+
         <div class="conteinerChat">
-            <div id="chat">
-                <!-- <ul id="text">
-                    <li id="item">Hi...</li>
-                </ul> -->
+            <div id="chat" class="todoApp-Container">
+                <!-- Clase de JavaScript: Trae todos los Mensajes de un Canal -->
                 <div class="chatBox"></div>
              </div>
              <div id="sub-content">
@@ -118,12 +120,9 @@
         </div> 
     </div>
 
-    
-
-    <!-- <a href="profile.html">Mi perfil</a> -->
-
     <script src="/scripts/home.js"></script>
     <script src="/scripts/channel.js"></script>
     <script src="/scripts/chat.js"></script>
+
 </body>
 </html>

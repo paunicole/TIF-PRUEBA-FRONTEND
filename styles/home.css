@@ -4,8 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-
   }
 
 .main-container{
@@ -52,32 +50,32 @@ ul{
     justify-content: flex-start;
     
 }
-/*  */
 
 .conteiner-servers{
   padding: 5px ;
 }
+
 .conteiner-servers .servidores .servi{
     display: inline;
     font-size: 18px;
 }
 
 .edicion .editServi{
-    display: flex;
-    flex-direction: column;
-    padding-top: 3px;
-    padding-left: 3px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3px;
+  padding-left: 3px;
+  cursor: pointer;
 }
 
 .conteinerUser{
-    height: 10vh;
-    background-color: rgb(153, 86, 131);
-    display: flex;
-    
-    flex-direction: column;
-    align-items: center ;
-    min-width:120px;
+  height: 10vh;
+  background-color: rgb(153, 86, 131);
+  display: flex;
+  
+  flex-direction: column;
+  align-items: center ;
+  min-width:120px;
 }
 
 /* link profile */
@@ -89,12 +87,11 @@ ul{
 /* icon + */
 
 .conteiner-icons{
-
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
 
 .icono:hover{
     cursor: pointer;
@@ -108,12 +105,12 @@ ul{
 #iconUser{
     margin-top: -20px;
 }
+
 .conteinerUser:hover{
     cursor: pointer;
 }
 
-
-  /* contenedor de canales y sus hijos */
+/* contenedor de canales y sus hijos */
 .conteinerCanales{
     background-color: rgb(51, 52, 131);
     color: white ;
@@ -128,11 +125,12 @@ ul{
     height: 100vh;
     position: sticky;
     /* height: inherit; */
-
 }
+
 .items-canal{
     align-self: center;
 }
+
 .canales{
     height: 90vh;
     display: flex;
@@ -205,7 +203,8 @@ input{
     min-width: 400px;
 }
 
-/* modal server */
+/* ================ MODAL Server ================ */
+
 .modalServer , .modalCanal{
     display: none; 
     position: fixed ;
@@ -227,7 +226,6 @@ input{
     text-align: center;
 }
 
-
 #newcanal{
   border-radius: 5px;
   padding: 5px;
@@ -235,7 +233,8 @@ input{
   background-color: #000;
   margin-bottom: 4px;
 }
-  /* modal canal */
+
+/* ================ MODAL Channel ================ */
 
 /* .modalCanal{
 
@@ -256,8 +255,7 @@ input{
   /* CONTENIDO */
 .modalCanal .modalC {
     text-align: center;
-  }
-
+}
 
 #close , #btonC, #btonS{
     border-radius: 5px;
@@ -268,17 +266,15 @@ input{
 }
 
 /* ========= SERVIDORES, CANALES, MENSAJES ============= */
+
 .todoApp-Container{
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 99%;
   height: 100vh;
   z-index: 99;
 }
 
 /* ===== SERVERS ===== */
-
 
 .serverBox{
   padding: 5px;
@@ -313,6 +309,13 @@ input{
   transition: .5s;
 }
 
+.noServers {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000; /* Cambia el color según tu preferencia */
+  margin: 10px 0;
+}
+
 /* ===== CHANNELS ===== */
 .channelBox{
   padding: 5px;
@@ -340,9 +343,16 @@ input{
   transition: .5s;
 }
 
+.noChannels {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000; /* Cambia el color según tu preferencia */
+  margin: 10px 0;
+}
+
 /* ===== MESSAGES ===== */
 .chatBox{
-  padding: 5px;
+  padding: 50px;
   width: 500px;
   max-height: 1000px;
 }
@@ -353,9 +363,37 @@ input{
   font-size: 15px;
   font-family: 'Prompt', sans-serif;
   margin: 10px 0;
+  margin-bottom: 30px;
   padding: 10px;
   border-radius: 10px;
   transition: .5s;
   cursor: pointer;
   color: white;
  }
+
+.chatAvatar {
+  width: 50px;
+}
+
+.chatUsername {
+  font-weight: bold;
+  font-size: 16px;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+.chatDate {
+  font-size: 12px;
+  color: #666;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.noMessages {
+  font-size: 30px;
+  font-style: italic;
+  color: #888; /* Cambia el color según tu preferencia */
+  margin: 10px 0;
+}
