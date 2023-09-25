@@ -38,7 +38,12 @@ let serverBox = document.querySelector(".serverBox");
 let serverBtnAdd = document.querySelector(".btonAddServer");
 
 let catchServers = () => {
-    fetch("http://127.0.0.1:5000/servers/")
+    
+    let url = `http://127.0.0.1:5000/servers/`;
+    fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
     .then(res => res.json())
     .then(async data => {
         if (data.length === 0) {
@@ -82,12 +87,9 @@ let addServer = () => {
     var valorNameS = inputNameS.value;
     var valorDescriptionS = inputDescriptionS.value;
 
-    console.log(valorNameS)
-    console.log(valorDescriptionS)
-
     let server = {
         name: valorNameS,
-        description: valorDescriptionS
+        description: valorDescriptionS,
     };
 
     fetch("http://127.0.0.1:5000/servers/", {
@@ -95,7 +97,8 @@ let addServer = () => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(server)
+        body: JSON.stringify(server),
+        credentials: 'include'
     })
     .then(res => res.json())
     .then(data => {
