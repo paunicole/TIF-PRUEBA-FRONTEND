@@ -16,8 +16,10 @@ function getProfile() {
                 // if( data.avatar!==""){
                 let avatarLink=`../assets/${data.avatar}`;
                 const iconUser=document.getElementById("iconUser");
-                iconUser.src=avatarLink;             
+                iconUser.src=avatarLink;    
+                // console.data("home,",data)         
                 document.getElementById("UserName").innerText = data.username;
+                // console.data("home,",data)  
             });
         } else {
             return response.json().then(data => {

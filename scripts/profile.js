@@ -65,77 +65,126 @@ function logout() {
     });
 }
 
-// boton edit - MODAL
-const open = document.getElementById('editUser');
-const modal_container = document.getElementById('modal_container');
-const close = document.getElementById('close');
-
-open.addEventListener('click', () => {
-     console.log("datos del user: ",datosUser)
-    //  agregando botones y parrafo
-     const divParent=document.getElementById("message")
-    divParent.innerHTML+=`<p id="padre6"></p>`
-    divParent.innerHTML+=`<p id="pBtn1"></p>`
-    divParent.innerHTML+=`<p id="pBtn2"></p>`
- 
-    // uso de los p para ingresar los nuevo valores con input
-    let padre1= document.getElementById("padre1")
-    let padre2= document.getElementById("padre2")
-    let padre3= document.getElementById("padre3")
-    let padre4= document.getElementById("padre4")
-    let padre5= document.getElementById("padre5")
-    let padre6= document.getElementById("padre6")
-    
-    // 0-user_id 1-username 2-email 3-name 4-appe 5-cumple 6-avatar
-    padre1.innerHTML=`<strong>Usuario: </strong><input id="upUsername" placeholder=${datosUser.u} type="text">`
-    padre2.innerHTML=`<strong>Email: </strong><input id="upEmail" placeholder=${datosUser.e} type="email">`
-    // console.log(datosUser.f)
-    padre3.innerHTML=`<strong>Nombre: </strong><input id="upName" placeholder=${datosUser.f}  type="text">`
-    padre4.innerHTML=`<strong>Apellido: </strong><input id="upLastname" placeholder=${datosUser.l} type="text">`
-    // padre5.innerHTML=`<strong>Cumpleaños: </strong><input id="upBirthdate" placeholder=${datosUser.c} type="Date">`
-    padre6.innerHTML=`<strong>Avatar: </strong><input id="upImg" placeholder=${datosUser.i} type="file">`
-
-    document.getElementById("padre5").style.display="none"; //esconder el cumple
-    
-    // botones de enviar y volver
-    let pBtn1=document.getElementById("pBtn1")
-    pBtn1.innerHTML=`<button id="updateUser" type="submit">Enviar</button>`
-    let pBtn2=document.getElementById("pBtn2")
-
-    // se pasan el value de los input y se envian para ser actualizados a la base
-    document.getElementById("updateUser").addEventListener("click",()=> {
-        
-        user=document.getElementById("upUsername").value;
-        // console.log("Usernmae_:",user)
-        email_user=document.getElementById("upEmail").value;
-        firstname=document.getElementById("upName").value;
-        lastname=document.getElementById("upLastname").value;
-        // birthdate=document.getElementById("upBirthdate").value;
-        avatar=document.getElementById("upImg").value;
-
-        update(user,datosUser.p,email_user,firstname,lastname,avatar,birthdate);
-    })
-    
-    pBtn2.innerHTML=`<button id="volver">Volver</button>`
-
-    document.getElementById("volver").style.backgroundColor="black";
-    document.getElementById("volver").style.color="white"; 
-
-    document.getElementById("volver").addEventListener('click', () => {
-        window.location.href="profile.html"
-    });
-    
-});
-
-
 // almacenar los datos del usuario
 function updateCampos(user_id,email,user,password,firstName,lastName,cumple, img){
     user={"id":user_id,"e":email,"u":user,"p":password,"f":firstName,"l":lastName,"c":cumple,"i":img}
     return user
 }
 
+// boton edit - MODAL
+const open = document.getElementById('editUser');
+const modal_container = document.getElementById('modal_container');
+const close = document.getElementById('close');
+
+open.addEventListener('click', (event) => {
+    event.preventDefault()
+     console.log("datos del user: ",datosUser)
+    //  agregando botones y parrafo
+     const divParent=document.getElementById("message")
+     let h1Text=document.getElementById("h1Text")
+
+    h1Text.innerHTML="Editar perfil"
+    // eliminar contenido
+    divParent.removeChild(document.getElementById("padre1"))
+    divParent.removeChild(document.getElementById("padre2"))
+    divParent.removeChild(document.getElementById("padre3"))
+    divParent.removeChild(document.getElementById("padre4"))
+    divParent.removeChild(document.getElementById("padre5"))
+    
+
+    crearFomulario(divParent)
+
+    document.getElementById("send").addEventListener("click",(e)=>{
+        e.preventDefault()
+        const upEmail=document.getElementById("upEmail").value
+        const upUser=document.getElementById("upUser").value
+        const upNombre=document.getElementById("upNombre").value
+        const upApellido=document.getElementById("upApellido").value
+        // console.log("what is--",upEmail)
+        update(upUser,datosUser.p ,upEmail, upNombre , upApellido ,datosUser.i)
+    })
+    document.getElementById("upAvatar").addEventListener("click",(eve)=>{
+        eve.preventDefault()
+        alert("dste click!")
+        
+    })
+});
+
+function crearFomulario(divParent){
+    const formUp=document.createElement("form")
+    formUp.id="updateUser"
+
+    const btonChange=document.createElement("button")
+    btonChange.id="upAvatar"
+    btonChange.innerHTML="Cambiar Avatar"
+    // const avatar=document.getElementById("avatar")
+    //label e input para usuario - email -firstName lastName- birthdate 
+    const label1=document.createElement("label")
+    label1.setAttribute("for","upUser")
+    label1.textContent="Usuario: "
+    const input1=document.createElement("input")
+    input1.id="upUser";
+    input1.name="upUser"
+
+    const label2=document.createElement("label")
+    const input2=document.createElement("input")
+    label2.setAttribute("for","upEmail")
+    label2.textContent="Email: "
+    input2.id="upEmail" 
+    input2.name="upEmail"
+
+    const label3=document.createElement("label")
+    label3.setAttribute("for","upNombre")
+    label3.textContent="Nombre: "
+    const input3=document.createElement("input")
+    input3.id="upNombre" 
+    input3.name="upNombre"
+    const label4=document.createElement("label")
+    label4.setAttribute("for","upApellido")
+    const input4=document.createElement("input")
+    label4.textContent="Apellido: "
+    input4.id="upApellido" 
+    input4.name="upApellido"
+    input4.type="text"
+
+    const label5=document.createElement("label")
+    label5.setAttribute("for","upBirthdate")
+    const input5=document.createElement("input")
+    label5.textContent="Birthdate: "
+    input5.id="upBirthdate" 
+    input5.name="upBirthdate"
+    input5.setAttribute("type","Date")
+
+    formUp.appendChild(btonChange)
+    // formUp.appendChild(document.createElement("br"))
+    formUp.appendChild(label1)
+    formUp.appendChild(input1)
+    formUp.appendChild(label2)
+    formUp.appendChild(input2)
+    formUp.appendChild(label3)
+    formUp.appendChild(input3)
+    formUp.appendChild(label4)
+    formUp.appendChild(input4)
+    formUp.appendChild(label5)
+    formUp.appendChild(input5)
+    // boton de enviar
+    const btonSend=document.createElement("button")
+    btonSend.id="send"
+    btonSend.type="submit"
+    btonSend.innerHTML="Actualizar Datos"
+    formUp.appendChild(btonSend)
+    divParent.appendChild(formUp)
+    document.getElementById("upEmail").placeholder=datosUser.e
+    document.getElementById("upNombre").placeholder=datosUser.f
+    document.getElementById("upUser").placeholder=datosUser.u
+    document.getElementById("upApellido").placeholder=datosUser.l
+    
+    
+};
+
 // actualizar en la base de datos
-function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate=null) {    
+function update(user,pass_user,email_user,firstname,lastname,avatar) {  
+    console.log("usuario-->",document.getElementById("upUser").value)  
     var data = {
         "user_id":datosUser.id,
         password: pass_user
@@ -176,6 +225,7 @@ function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate=nu
         data["avatar"]=datosUser.i
     }
         
+    
     fetch("http://127.0.0.1:5000/users/update", {
         method: 'PUT',
         headers: {
@@ -188,16 +238,19 @@ function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate=nu
         if (response.status === 200) {
             // Redirect to profile page if login is successful
             return response.json().then(data => {
-                window.location.href = "profile.html";
+                window.location.href = "login.html";
+                // window.location.href="profile.html"; 
+                //document.getElementById("message").innerHTML = "EXITO!";
             });
         } else {
             return response.json().then(data => {
-                // console.log(data.message)
-                alert(data.message);
+                console.log(data.message)
+                document.getElementById("message").innerHTML = data.message;
             });
         }
     })
     .catch(error => {
-        alert("An error occurred.");
+        document.getElementById("message").innerHTML = "An error occurred.";
     });
 }
+

@@ -92,6 +92,23 @@ background-color: #3e8e41;
     background-color: #011640;
 }
 
-/* button.inputs{
-    justify-content: center;
-} */
+/* formulario updateUser */
+#updateUser{
+    display: flex;
+    flex-direction: column;
+}
+button#upAvatar{
+    background: #1F5F74;
+  color: white;
+  padding: 6px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button#send{
+    background: #060808;
+  color: white;
+  padding: 6px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+}
