@@ -24,7 +24,7 @@ function register() {
         data["last_name"]=last_name
     }
     
-    data["avatar"]="userIcon.png"
+    data["avatar"]="avatar.png"
     fetch("http://127.0.0.1:5000/users/register", {
         method: 'POST',
         headers: {

@@ -106,19 +106,6 @@ add.addEventListener("click",(event)=>{
   modalServer.style.display = 'block';  
 });
 
-// // modal user
-// const open = document.getElementById('open');
-// const modal_container = document.getElementById('modal_container');
-// const close = document.getElementById('close');
-
-// open.addEventListener('click', () => {
-//   modal_container.classList.add('show');  
-// });
-
-// close.addEventListener('click', () => {
-//   modal_container.classList.remove('show');
-// });
-
 // modal canal
 const btm=document.getElementById("newcanal")
 const modal_conta = document.getElementById('modalCanal');
