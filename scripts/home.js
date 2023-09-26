@@ -1,4 +1,4 @@
-// ======================== MOSTRAR MI PERFIL =========================
+// ======================== MOSTRAR MI PERFIL ========================
 
 window.addEventListener('load', function () {
     getProfile();
@@ -39,7 +39,7 @@ function getProfile() {
     });
 }
 
-// ======================== MOSTRAR, CREAR Y EXPLORAR SERVIDORES =========================
+// ======================== MOSTRAR SERVIDORES DE UN USUARIO ========================
 
 let serverBox = document.querySelector(".serverBox");
 let serverBtnAdd = document.querySelector(".btonAddServer");
@@ -65,7 +65,9 @@ let catchServers = () => {
             //noServersMessage.classList.add("noServers");
             //noServersMessage.textContent = "No se encontraron servidores.";
             //serverBox.appendChild(noServersMessage);
-            notServer.style.display = 'block'; // Mensaje en la 3° columna
+            
+            // Muestro mensaje en la 3° columna
+            notServer.style.display = 'block'; 
         } else {
 
             // Oculto mensaje en la 3° columna
@@ -92,7 +94,8 @@ let catchServers = () => {
 
 catchServers();
 
-// AGREGAR SERVIDOR
+// ======================== INSERTAR UN NUEVO SERVIDOR A LA BASE DE DATOS ========================
+
 let addServer = () => {
     
     // Obtener el elemento input por su id
@@ -124,7 +127,7 @@ let addServer = () => {
 }
 
 
-// EXPLORAR SERVIDORES
+// ====================================== EXPLORAR SERVIDORES =====================================
 
 const serverExplore = document.getElementById('explore');
 let serverExploreBox = document.querySelector(".serverExploreBox");
