@@ -95,11 +95,11 @@ ul{
 
 .icono:hover{
     cursor: pointer;
-    width: 38px;;
+    width: 70px;
 }
 
 .icono{
-    width:32px;
+    width:60px;
 }
 
 #iconUser{

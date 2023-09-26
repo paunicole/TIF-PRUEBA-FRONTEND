@@ -61,16 +61,17 @@ let catchServers = () => {
         if (data.length === 0) {
 
             // No se encontraron servidores, muestra un mensaje
-            const noServersMessage = document.createElement("p");
-            noServersMessage.classList.add("noServers");
-            noServersMessage.textContent = "No se encontraron servidores.";
-            serverBox.appendChild(noServersMessage);
+            //const noServersMessage = document.createElement("p");
+            //noServersMessage.classList.add("noServers");
+            //noServersMessage.textContent = "No se encontraron servidores.";
+            //serverBox.appendChild(noServersMessage);
             notServer.style.display = 'block'; // Mensaje en la 3° columna
         } else {
+
+            // Oculto mensaje en la 3° columna
+            notServer.style.display = 'none'; 
             for (let server of data) {  // iteramos los servidores
                 
-                notServer.style.display = 'none'; // Oculto mensaje en la 3° columna
-
                 // Crear elemento de texto para el nombre del servidor
                 let serverText = document.createElement("a");
                 serverText.classList.add("serverText");
@@ -140,6 +141,7 @@ serverExplore.addEventListener('click', () => {
     }
     if(visible){
         serverExploreBox.style.display = 'none';
+        notServer.style.display = 'block';
     } else{
         serverExploreBox.style.display = 'grid';
     }
@@ -155,6 +157,9 @@ function addServersExplore() {
     .then(async data => {
 
         for (let server of data) {
+            //Ocultar mensaje de unirse a un servidor
+            notServer.style.display = 'none';
+
             // Crear elemento p para el nombre del servidor
             let serverExploreText = document.createElement("a");
             serverExploreText.classList.add("serverExploreText");
