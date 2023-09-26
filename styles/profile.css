@@ -112,3 +112,32 @@ button#send{
   cursor: pointer;
   border-radius: 3px;
 }
+
+/* contenedor de avatar */
+#conteiner-avatars{
+    display: none; 
+    position: fixed ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80%; /* Altura máxima de la ventana emergente */
+    width: 300px;
+    padding: 20px;
+    background-color: antiquewhite;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    border-radius: 8px;
+    z-index: 1000;
+    color:#000;
+}
+#conteiner-avatars ul li{
+    list-style-type:none;
+    display: inline;
+}
+#conteiner-avatars ul li img{
+    width: 42px;
+    /* background-color: #011640; */
+}
+#conteiner-avatars ul li:hover{
+    cursor:pointer;
+}

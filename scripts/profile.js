@@ -44,7 +44,7 @@ function getProfile() {
         document.getElementById("message").innerHTML = "An error occurred.";
     });
 }
-
+var inputAvatar;
 function logout() {
     const url = "http://127.0.0.1:5000/users/logout";
     
@@ -97,6 +97,36 @@ open.addEventListener('click', (event) => {
 
     crearFomulario(divParent)
 
+    //cuando le damos click al boton de cambiar avatar, crea y abre un modal
+    document.getElementById("upAvatar").addEventListener("click",(eve)=>{
+        eve.preventDefault()
+        //crea el modal
+        modalAvatars(divParent)
+        document.getElementById("conteiner-avatars").style.display="block"
+        //click en avatar dispara al input y va hacer que cambie el avatar
+        document.getElementById("avatar0").addEventListener("click",()=>{
+            document.getElementById("seleccion").value="avatar.png"
+        })
+        document.getElementById("avatar1").addEventListener("click",()=>{
+            document.getElementById("seleccion").value="avatar1.png"
+        })
+        document.getElementById("avatar2").addEventListener("click",()=>{
+            document.getElementById("seleccion").value="avatar2.png"
+        })
+        document.getElementById("avatar3").addEventListener("click",()=>{
+            document.getElementById("seleccion").value="avatar3.png"
+        })
+        document.getElementById("avatar4").addEventListener("click",()=>{
+            document.getElementById("seleccion").value="avatar4.png"
+        })
+        document.getElementById("avatar5").addEventListener("click",()=>{
+            document.getElementById("seleccion").value="avatar5.png"
+        })
+        document.getElementById("listo").addEventListener("click",()=>{
+            // se cierra el modal de elegir avatar
+            document.getElementById("conteiner-avatars").style.display="none"
+        })
+    })
     document.getElementById("send").addEventListener("click",(e)=>{
         e.preventDefault()
         const upEmail=document.getElementById("upEmail").value
@@ -105,14 +135,26 @@ open.addEventListener('click', (event) => {
         const upApellido=document.getElementById("upApellido").value
         const upBirthdate=document.getElementById("upBirthdate").value
         // console.log("what is--",upEmail)
-        update(upUser,datosUser.p ,upEmail, upNombre , upApellido ,datosUser.i,upBirthdate)
+        inputAvatar= document.getElementById("seleccion").value
+
+        update(upUser,datosUser.p ,upEmail, upNombre , upApellido ,inputAvatar,upBirthdate)
     })
-    document.getElementById("upAvatar").addEventListener("click",(eve)=>{
-        eve.preventDefault()
-        alert("dste click!")
-        
-    })
+    
 });
+function modalAvatars(divParent){
+    const divA=document.createElement("div")
+    divA.id="conteiner-avatars"
+    divA.innerHTML=`<ul><li id="avatar0"><img src="/assets/avatar.png" widht="32px">
+    <li id="avatar1"><img src="/assets/avatar1.png" widht="32px"></li>
+    <li id="avatar2"><img src="/assets/avatar2.png" widht="32px"></li>
+    <li id="avatar3"><img src="/assets/avatar3.png" widht="32px"></li>
+    <li id="avatar4"><img src="/assets/avatar4.png" widht="32px"></li>
+    <li id="avatar5"><img src="/assets/avatar5.png" widht="32px"></li></ul>
+    <input id="seleccion"><button id="listo">Confirmar</button>`
+    
+
+    divParent.appendChild(divA)
+}
 
 function crearFomulario(divParent){
     const formUp=document.createElement("form")
@@ -194,6 +236,7 @@ function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate) {
         "user_id":datosUser.id,
         password: pass_user
         }
+    //comprueba si hay algo en el input
     if (birthdate.length>0){
         data["birthdate"]=birthdate
     }
@@ -248,8 +291,8 @@ function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate) {
         if (response.status === 200) {
             // Redirect to profile page if login is successful
             return response.json().then(data => {
-                window.location.href = "login.html";
-                // window.location.href="profile.html"; 
+                // window.location.href = "profile.html";
+                window.location.href="profile.html"; 
                 //document.getElementById("message").innerHTML = "EXITO!";
             });
         } else {
