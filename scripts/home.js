@@ -44,6 +44,7 @@ function getProfile() {
 // ======================== MOSTRAR SERVIDORES DE UN USUARIO ========================
 
 let serverBox = document.querySelector(".serverBox");
+let chatBox = document.querySelector(".chatBox");
 let serverBtnAdd = document.querySelector(".btonAddServer");
 const notServer = document.getElementById('empty');
 
@@ -89,6 +90,7 @@ let catchServers = () => {
                 if (!serverText.hasEventListeners) {
                     console.log("ENTROOO AL IF DE SERVERS")
                     serverText.addEventListener('click', function(event) {
+                        chatBox.innerHTML = ''
                         catchChannels(server.server_id);
                         console.log("CLICK EN", server.server_id)
                     });
@@ -136,7 +138,7 @@ let catchChannels = (serverID) => {
             });
         }
 
-        channelBtnAdd.addEventListener("click", () => addChannel());
+        channelBtnAdd.addEventListener("click", () => addChannel(serverID));
     })
 
     .catch(err => console.log(err));
@@ -171,7 +173,9 @@ let createChannelContainer = (channel) =>{
     }
 }
 
-let addChannel = () => {
+let addChannel = (serverID) => {
+    console.log("CLICK EN AGREGAR CANAL AL SERVIDOR: ", serverID)
+
     // Obtener el elemento input por su id
     var inputNameC = document.getElementById("nameC");
     var inputDescriptionC = document.getElementById("descriptionC");
@@ -205,7 +209,7 @@ let addChannel = () => {
 
 // ======================== CHAT ====================
 
-let chatBox = document.querySelector(".chatBox");
+
 
 let catchChats = (channelID) => {
     console.log("LLEGÓ A CATCHCHATS. Canal:", channelID)
