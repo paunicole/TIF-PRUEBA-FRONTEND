@@ -36,7 +36,7 @@
                     </ul> -->
                 </div>
 
-                <!-- Botones servidor -->
+                <!-- ========== BOTONES servidor ========== -->
                 <div class="conteiner-icons item-server">
                     <ul>
                         <li><img class="icono agregar" id="add" src="../assets/mas.png" width="32px" ></li>
@@ -108,11 +108,25 @@
         <!-- ==================== COLUMNA CHAT ==================== -->
 
         <div class="conteinerChat">
+            
             <div id="chat" class="todoApp-Container">
+                
                 <!-- Clase de JavaScript: Trae todos los Mensajes de un Canal -->
                 <div class="chatBox"></div>
-             </div>
-             <div id="sub-content">
+
+                <!-- Clase de JavaScript: Trae todos los Servidores -->
+                <div class="serverExplorer">
+                    <div class="serverExploreBox"></div>
+                </div>
+
+                <div class="serverEmpty">
+                    <p id="empty">Aún no te has unido a un servidor <br>
+                        Intenta buscar uno o crea uno propio</p>
+                </div>
+
+            </div>
+             
+            <div id="sub-content">
                 <!-- <input id="input" name="ingreso" type="text" placeholder="Escribe aqui..."> -->
                 <textarea id="input" name="ingreso" type="text" placeholder="Escribe aqui..." ></textarea>
                 <button id="bton">Enviar</button>

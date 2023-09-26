@@ -149,24 +149,7 @@ ul{
 
 /* chat */
 
-.conteinerChat{
-    width: 80%;
-    height: inherit;
-    min-width: 500px;
-    /* background-color:#000; */
-    /* background-color: rgb(196, 216, 216); */
-    position:sticky; 
-}
 
-#chat{
-    display: flex;
-    flex-direction: column;
-    /* margin:  50px auto; */
-    height: 93vh;
-    background-image: url("../assets/pngwing.png");
-    background-repeat: no-repeat; 
-    background-position: center;
-}
 
 input{
     /* position: absolute; */
@@ -316,7 +299,8 @@ input{
   margin: 10px 0;
 }
 
-/* ===== CHANNELS ===== */
+/* ====================== CHANNELS ========================= */
+
 .channelBox{
   padding: 5px;
   width: 200px;
@@ -350,7 +334,27 @@ input{
   margin: 10px 0;
 }
 
-/* ===== MESSAGES ===== */
+/* ====================== CHANNEL ==================== */
+
+.conteinerChat{
+  width: 80%;
+  height: inherit;
+  min-width: 500px;
+  /* background-color:#000; */
+  /* background-color: rgb(196, 216, 216); */
+  position:sticky; 
+}
+
+#chat{
+  display: flex;
+  flex-direction: column;
+  /* margin:  50px auto; */
+  height: 93vh;
+  background-image: url("../assets/pngwing.png");
+  background-repeat: no-repeat; 
+  background-position: center;
+}
+
 .chatBox{
   padding: 50px;
   width: 500px;
@@ -396,4 +400,45 @@ input{
   font-style: italic;
   color: #888; /* Cambia el color según tu preferencia */
   margin: 10px 0;
+}
+
+.serverExplorer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serverExploreText{
+  display: block;
+  width: 100%;
+  background-color: rgb(26, 187, 216);
+  font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: .5s;
+}
+
+.serverExploreText:hover{
+  background-color: aquamarine;
+  color: black;
+  transition: .5s;
+}
+
+#empty {
+  background-color: #ff0000;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.serverEmpty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

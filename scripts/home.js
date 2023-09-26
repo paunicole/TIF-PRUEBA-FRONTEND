@@ -39,11 +39,13 @@ function getProfile() {
     });
 }
 
-// ======================== MOSTRAR Y CREAR SERVIDORES =========================
+// ======================== MOSTRAR, CREAR Y EXPLORAR SERVIDORES =========================
 
 let serverBox = document.querySelector(".serverBox");
 let serverBtnAdd = document.querySelector(".btonAddServer");
+const notServer = document.getElementById('empty');
 
+// CARGA DE SERVIDORES
 let catchServers = () => {
     
     let url = `http://127.0.0.1:5000/servers/serversuser`;
@@ -63,9 +65,11 @@ let catchServers = () => {
             noServersMessage.classList.add("noServers");
             noServersMessage.textContent = "No se encontraron servidores.";
             serverBox.appendChild(noServersMessage);
-
+            notServer.style.display = 'block'; // Mensaje en la 3° columna
         } else {
             for (let server of data) {  // iteramos los servidores
+                
+                notServer.style.display = 'none'; // Oculto mensaje en la 3° columna
 
                 // Crear elemento de texto para el nombre del servidor
                 let serverText = document.createElement("a");
@@ -87,6 +91,7 @@ let catchServers = () => {
 
 catchServers();
 
+// AGREGAR SERVIDOR
 let addServer = () => {
     
     // Obtener el elemento input por su id
@@ -117,50 +122,48 @@ let addServer = () => {
     .catch(err => console.log(err));
 }
 
-//Cargar servidores
-function cargarServidoresExplorar() {
+
+// EXPLORAR SERVIDORES
+
+const serverExplore = document.getElementById('explore');
+let serverExploreBox = document.querySelector(".serverExploreBox");
+let containerChannel = document.getElementById('.conteinerCanales');
+let containerChat = document.getElementById('.conteinerChat');
+
+let serversCargados = false;
+let visible = false;
+
+serverExplore.addEventListener('click', () => {
+    if (!serversCargados) { //Si los servidores aun no están cargdados, los cargo
+        addServersExplore();
+        serversCargados = true;
+    }
+    if(visible){
+        serverExploreBox.style.display = 'none';
+    } else{
+        serverExploreBox.style.display = 'grid';
+    }
+    visible = !visible;
+});
+
+function addServersExplore() {
     fetch('http://127.0.0.1:5000/servers', {
         method: 'GET',
         credentials: 'include'
     })
-    .then(response => {
-        if (response.status === 200) {
-            return response.json().then(data => {
-                // Maneja los datos de los servidores
-                const servidores = data.nombre_servidor;
-                const containerServidor = document.getElementById('container_canal');
-    
-                servidores.forEach(servidor => {
-                    const nombreServidor = servidor; // Nombre del servidor
-                    const servidorElement = document.createElement('div');
-                    
-                    servidorElement.className = 'canal';
-                    servidorElement.id = nombreServidor
+    .then(res => res.json())
+    .then(async data => {
 
-                    const h5 = document.createElement('h5');
-                    h5.textContent = nombreServidor;
-                    servidorElement.appendChild(h5);
-                    
-                    // Agrega el servidor al DOM, por ejemplo, a un contenedor div con id="container_canal"
-                    containerServidor.appendChild(servidorElement);
-                    if (!servidorElement.hasEventListeners) {
-                        servidorElement.addEventListener('click', function() {
-                            agregarServidorAlDb(nombreServidor);
-                        });
-                        servidorElement.hasEventListeners = true; // Marcar que se agregó el evento
-                    }
-                });
-            });
-        } else {
-            return response.json().then(data => {
-                document.getElementById('message').innerHTML = data.msg;
-            });
+        for (let server of data) {
+            // Crear elemento p para el nombre del servidor
+            let serverExploreText = document.createElement("a");
+            serverExploreText.classList.add("serverExploreText");
+            serverExploreText.textContent = server.name;
+            serverExploreBox.appendChild(serverExploreText);
         }
     })
-    .catch(error => {
-        document.getElementById('message').innerHTML = 'An error occurred.';
-    });
-}
+    .catch(err => console.log(err));
+};
 
 // ======================== MODALES =========================
 
