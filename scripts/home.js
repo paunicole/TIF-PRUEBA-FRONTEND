@@ -46,7 +46,7 @@ let serverBtnAdd = document.querySelector(".btonAddServer");
 
 let catchServers = () => {
     
-    let url = `http://127.0.0.1:5000/servers/`;
+    let url = `http://127.0.0.1:5000/servers/serversuser`;
     fetch(url, {
         method: 'GET',
         headers: {
@@ -115,6 +115,51 @@ let addServer = () => {
         location.reload();
     })
     .catch(err => console.log(err));
+}
+
+//Cargar servidores
+function cargarServidoresExplorar() {
+    fetch('http://127.0.0.1:5000/servers', {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json().then(data => {
+                // Maneja los datos de los servidores
+                const servidores = data.nombre_servidor;
+                const containerServidor = document.getElementById('container_canal');
+    
+                servidores.forEach(servidor => {
+                    const nombreServidor = servidor; // Nombre del servidor
+                    const servidorElement = document.createElement('div');
+                    
+                    servidorElement.className = 'canal';
+                    servidorElement.id = nombreServidor
+
+                    const h5 = document.createElement('h5');
+                    h5.textContent = nombreServidor;
+                    servidorElement.appendChild(h5);
+                    
+                    // Agrega el servidor al DOM, por ejemplo, a un contenedor div con id="container_canal"
+                    containerServidor.appendChild(servidorElement);
+                    if (!servidorElement.hasEventListeners) {
+                        servidorElement.addEventListener('click', function() {
+                            agregarServidorAlDb(nombreServidor);
+                        });
+                        servidorElement.hasEventListeners = true; // Marcar que se agregó el evento
+                    }
+                });
+            });
+        } else {
+            return response.json().then(data => {
+                document.getElementById('message').innerHTML = data.msg;
+            });
+        }
+    })
+    .catch(error => {
+        document.getElementById('message').innerHTML = 'An error occurred.';
+    });
 }
 
 // ======================== MODALES =========================
