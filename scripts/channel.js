@@ -9,8 +9,7 @@ let channelBtnAdd = document.querySelector(".btonAddChannel");
 let catchChannels = (serverID) => {
     let url = `http://127.0.0.1:5000/channels/?server_id=${serverID}`;
     fetch(url, {
-        method: 'GET',
-        credentials: 'include'
+        method: 'GET'
     })
     .then(res => res.json())
     .then(data => {

@@ -7,7 +7,9 @@ console.log("holaaa chat")
 
 let catchChats = (channelID) => {
     let url = `http://127.0.0.1:5000/messages/?channel_id=${channelID}`;
-    fetch(url)
+    fetch(url, {
+        method: 'GET'
+    })
     .then(res => res.json())
     .then(data => {
         if (data.length === 0) {

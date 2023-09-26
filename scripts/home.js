@@ -1,8 +1,11 @@
 // ======================== MOSTRAR MI PERFIL =========================
 
-window.addEventListener('load', function () {
-    getProfile();
-});
+//window.addEventListener('load', function () {  
+//});
+
+getProfile();
+
+console.log("holaaa channel")
 
 function getProfile() {
     const url = "http://127.0.0.1:5000/users/profile";
@@ -44,7 +47,7 @@ let catchServers = () => {
     let url = `http://127.0.0.1:5000/servers/`;
     fetch(url, {
         method: 'GET',
-        credentials: 'include'
+        credentials: 'include' // Importante estar por las sesiones
     })
     .then(res => res.json())
     .then(async data => {
@@ -133,13 +136,11 @@ const cv =document.getElementById('btonC');
 cv.addEventListener('click', () => {
     //   modal_container.classList.add('show'); 
         modal_conta.style.display="none";
-        
     });
 
 btm.addEventListener('click', () => {
 //   modal_container.classList.add('show'); 
     modal_conta.style.display="block";
-    
 });
 
 // ====================== CHAT ============================
