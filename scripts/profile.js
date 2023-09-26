@@ -103,8 +103,9 @@ open.addEventListener('click', (event) => {
         const upUser=document.getElementById("upUser").value
         const upNombre=document.getElementById("upNombre").value
         const upApellido=document.getElementById("upApellido").value
+        const upBirthdate=document.getElementById("upBirthdate").value
         // console.log("what is--",upEmail)
-        update(upUser,datosUser.p ,upEmail, upNombre , upApellido ,datosUser.i)
+        update(upUser,datosUser.p ,upEmail, upNombre , upApellido ,datosUser.i,upBirthdate)
     })
     document.getElementById("upAvatar").addEventListener("click",(eve)=>{
         eve.preventDefault()
@@ -186,12 +187,18 @@ function crearFomulario(divParent){
 };
 
 // actualizar en la base de datos
-function update(user,pass_user,email_user,firstname,lastname,avatar) {  
+function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate) {  
     console.log("usuario-->",document.getElementById("upUser").value)  
+    console.log("com",birthdate)
     var data = {
         "user_id":datosUser.id,
         password: pass_user
         }
+    if (birthdate.length>0){
+        data["birthdate"]=birthdate
+    }
+        
+    
     // comprobar si contiene algo el input caso contrario se queda con el valor que tenia
     if (user!="" && user!=datosUser.u){
         data["username"]=user
@@ -227,7 +234,7 @@ function update(user,pass_user,email_user,firstname,lastname,avatar) {
     }else{
         data["avatar"]=datosUser.i
     }
-        
+    
     
     fetch("http://127.0.0.1:5000/users/update", {
         method: 'PUT',
