@@ -1,9 +1,8 @@
 // ======================== MOSTRAR MI PERFIL =========================
 
-//window.addEventListener('load', function () {  
-//});
-
-getProfile();
+window.addEventListener('load', function () {
+    getProfile();
+});
 
 console.log("holaaa channel")
 
@@ -12,6 +11,9 @@ function getProfile() {
     
     fetch(url, {
         method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         credentials: 'include'
     })
     .then(response => {
@@ -47,6 +49,9 @@ let catchServers = () => {
     let url = `http://127.0.0.1:5000/servers/`;
     fetch(url, {
         method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         credentials: 'include' // Importante estar por las sesiones
     })
     .then(res => res.json())
