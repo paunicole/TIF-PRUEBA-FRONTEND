@@ -1,8 +1,10 @@
 // ======================== MOSTRAR MI PERFIL ========================
 
 window.addEventListener('load', function () {
-    getProfile();
+    catchServers();
 });
+
+getProfile();
 
 console.log("holaaa channel")
 
@@ -45,7 +47,6 @@ let serverBox = document.querySelector(".serverBox");
 let serverBtnAdd = document.querySelector(".btonAddServer");
 const notServer = document.getElementById('empty');
 
-// CARGA DE SERVIDORES
 let catchServers = () => {
     
     let url = `http://127.0.0.1:5000/servers/serversuser`;
@@ -77,13 +78,23 @@ let catchServers = () => {
                 // Crear elemento de texto para el nombre del servidor
                 let serverText = document.createElement("a");
                 serverText.classList.add("serverText");
-                serverText.setAttribute("href", `home.html?server_id=${server.server_id}`);
+                //serverText.setAttribute("href", `home.html?server_id=${server.server_id}`);
                 serverText.setAttribute("data-server-id", server.server_id);
                 serverText.textContent = server.name;
                 
                 // Añadir elementos
                 serverText.appendChild(document.createElement("br"));
                 serverBox.appendChild(serverText);
+
+                if (!serverText.hasEventListeners) {
+                    console.log("ENTROOO AL IF DE SERVERS")
+                    serverText.addEventListener('click', function(event) {
+                        catchChannels(server.server_id);
+                        console.log("CLICK EN", server.server_id)
+                    });
+                    serverText.hasEventListeners = true; // Marcar que se agregó el evento
+                }
+
             }
         }
 
@@ -92,7 +103,177 @@ let catchServers = () => {
     .catch(err => console.log(err));
 };
 
-catchServers();
+// ======================== MOSTRAR CANALES ========================
+let channelBox = document.querySelector(".channelBox");
+let channelBtnAdd = document.querySelector(".btonAddChannel");
+
+let catchChannels = (serverID) => {
+    let url = `http://127.0.0.1:5000/channels/${serverID}`;
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.length === 0) {
+            console.log("NO HAY CANALES EN ", serverID)
+            // Si no hay canales, muestra un mensaje de advertencia
+            channelBox.innerHTML = ''
+            const noChannelsMessage = document.createElement("p");
+            noChannelsMessage.classList.add("noChannels");
+            noChannelsMessage.textContent = "Aún no hay canales en este servidor";
+            channelBox.appendChild(noChannelsMessage);
+        } else {
+            console.log("SI HAY CANALES EN ", serverID)
+            channelBox.innerHTML = ''
+
+            // Si hay canales, crea contenedores para cada uno
+            data.map(channel => {
+                createChannelContainer(channel);
+            });
+        }
+
+        channelBtnAdd.addEventListener("click", () => addChannel());
+    })
+
+    .catch(err => console.log(err));
+};
+
+let canalSeleccionado;
+
+let createChannelContainer = (channel) =>{
+
+    // Crear elemento de texto para el nombre del canal
+    let channelText = document.createElement("a");
+    channelText.classList.add("channelText");
+
+    //channelText.setAttribute("href", `home.html?server_id=${serverID}&channel_id=${channel.channel_id}`);
+    channelText.setAttribute("data-channel-id", channel.channel_id);
+
+    let channel_hashtag = `#${channel.name}`;
+    channelText.textContent = channel_hashtag;
+
+    // Añadir elementos
+    channelText.appendChild(document.createElement("br"));
+    channelBox.appendChild(channelText);
+
+    if (!channelText.hasEventListeners) {
+        channelText.addEventListener('click', function(event) {
+            notServer.style.display = 'none';
+            canalSeleccionado = channel.channel_id;
+            console.log("CANAL SELECCIONADO:", channel.channel_id)
+            catchChats(channel.channel_id);
+        });
+        channelText.hasEventListeners = true; // Marcar que se agregó el evento
+    }
+}
+
+let addChannel = () => {
+    // Obtener el elemento input por su id
+    var inputNameC = document.getElementById("nameC");
+    var inputDescriptionC = document.getElementById("descriptionC");
+
+     // Obtener el valor del input
+    var valorNameC = inputNameC.value;
+    var valorDescriptionC = inputDescriptionC.value;
+
+    console.log(valorNameC)
+    console.log(valorDescriptionC)
+
+    let channel = {
+        name: valorNameC,
+        description: valorDescriptionC,
+        server_id: serverID
+    };
+
+    fetch("http://127.0.0.1:5000/channels/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(channel)
+    })
+    .then(res => res.json())
+    .then(data => {
+        location.reload();
+    })
+    .catch(err => console.log(err));
+}
+
+// ======================== CHAT ====================
+
+let chatBox = document.querySelector(".chatBox");
+
+let catchChats = (channelID) => {
+    console.log("LLEGÓ A CATCHCHATS. Canal:", channelID)
+    let url = `http://127.0.0.1:5000/messages/?channel_id=${channelID}`;
+    fetch(url, {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.length === 0) {
+            console.log("NO HAY MENSAJES")
+            chatBox.innerHTML = ''
+
+            // Si no hay mensajes, muestra un mensaje de advertencia
+            const noMessagesMessage = document.createElement("p");
+            noMessagesMessage.classList.add("noMessages");
+            noMessagesMessage.textContent = "Aún no hay mensajes en este canal";
+            chatBox.appendChild(noMessagesMessage);
+        } else {
+            console.log("SI HAY MENSAJES")
+            chatBox.innerHTML = ''
+
+            // Si hay mensajes, crea contenedores para cada uno
+            data.map(chat => {
+                createChatContainer(chat);
+            });
+        }
+    })
+    .catch(err => console.log(err));
+};
+
+let createChatContainer = (chat) =>{
+    // Crear elemento img para el avatar del usuario
+    let chatAvatar = document.createElement("img");
+    chatAvatar.classList.add("chatAvatar");
+    let formattedAvatar = `/assets/${chat.user_id["avatar"]}`;
+    chatAvatar.src = formattedAvatar;
+    chatAvatar.alt = "Avatar";
+    
+    // Crear elemento de texto span para el nombre de usuario
+    let chatUser = document.createElement("span");
+    chatUser.classList.add("chatUsername");
+    chatUser.textContent = chat.user_id["username"];
+    
+    // Crear elemento de texto span para la fecha
+    let chatDate = document.createElement("span");
+    chatDate.classList.add("chatDate");
+    let originalDate = new Date(chat.date_time); // Convertir la fecha de texto a objeto Date 
+    let day = originalDate.getDate();            // Obtener el día del mes
+    let month = originalDate.getMonth();         // Obtener el mes
+    let year = originalDate.getFullYear();       // Obtener el año
+    let hours = originalDate.getHours().toString().padStart(2, '0');         // Obtener la hora
+    let minutes = originalDate.getMinutes().toString().padStart(2, '0');     // Obtener los minutos
+    let formattedDate = `${day}/${month + 1}/${year} ${hours}:${minutes}`;
+    chatDate.textContent = formattedDate;
+
+    // Crear elemento de texto p para el mensaje
+    let chatText = document.createElement("p");
+    chatText.classList.add("chatText");
+    chatText.textContent = chat.message;
+
+    // Añadir elementos
+    chatBox.appendChild(chatAvatar);
+    chatBox.appendChild(chatUser);
+    chatBox.appendChild(chatDate);
+    chatBox.appendChild(chatText);
+    chatText.setAttribute("data-chat-id", chat.message_id);
+}
 
 // ======================== INSERTAR UN NUEVO SERVIDOR A LA BASE DE DATOS ========================
 
