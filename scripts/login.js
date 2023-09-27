@@ -25,11 +25,11 @@ function login() {
             });
         } else {
             return response.json().then(data => {
-                document.getElementById("message").innerHTML = data.message;
+                alert(data.message);
             });
         }
     })
     .catch(error => {
-        document.getElementById("message").innerHTML = "An error occurred.";
+        alert("An error occurred.");
     });
 }

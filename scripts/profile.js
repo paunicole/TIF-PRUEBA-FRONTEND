@@ -320,3 +320,28 @@ function update(user,pass_user,email_user,firstname,lastname,avatar,birthdate) {
     });
 }
 
+// eliminar cuenta
+document.getElementById("deleteUser").addEventListener("click",()=>{
+    // alert("delete user")
+    console.log(datosUser.id)
+    const url = `http://127.0.0.1:5000/users/delete/${datosUser.id}`;
+    
+    fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json().then(data => {
+                alert(data.message)
+                window.location.href="login.html"
+            });
+        }
+    })
+    .catch(error => {
+        alert("An error occurred.")
+    });
+})
