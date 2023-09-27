@@ -46,8 +46,12 @@ function getProfile() {
 
 let serverBox = document.querySelector(".serverBox");
 let chatBox = document.querySelector(".chatBox");
+let containerChat = document.getElementById('.conteinerChat');
 let serverBtnAdd = document.querySelector(".btonAddServer");
 const notServer = document.getElementById('empty');
+
+let inputMessage = document.querySelector(".inputMessage");
+inputMessage.style.display = 'none'
 
 let catchServers = () => {
     
@@ -70,11 +74,12 @@ let catchServers = () => {
             //serverBox.appendChild(noServersMessage);
             
             // Muestro mensaje en la 3° columna
-            notServer.style.display = 'block'; 
+            notServer.style.display = 'block';
         } else {
 
             // Oculto mensaje en la 3° columna
-            notServer.style.display = 'none'; 
+            notServer.style.display = 'none';
+            
             for (let server of data) {  // iteramos los servidores
                 
                 // Crear elemento de texto para el nombre del servidor
@@ -91,7 +96,8 @@ let catchServers = () => {
                 if (!serverText.hasEventListeners) {
                     console.log("ENTROOO AL IF DE SERVERS")
                     serverText.addEventListener('click', function(event) {
-                        chatBox.innerHTML = ''
+                        chatBox.innerHTML = ''              // Borro el chat
+                        inputMessage.style.display = 'none' // Oculto el input de message
                         catchChannels(server.server_id);
                         console.log("CLICK EN", server.server_id)
                     });
@@ -210,8 +216,6 @@ let addChannel = (serverID) => {
 
 // ======================== CHAT ====================
 
-
-
 let catchChats = (channelID) => {
     console.log("LLEGÓ A CATCHCHATS. Canal:", channelID)
     let url = `http://127.0.0.1:5000/messages/?channel_id=${channelID}`;
@@ -238,6 +242,7 @@ let catchChats = (channelID) => {
                 createChatContainer(chat);
             });
         }
+        inputMessage.style.display = 'block'
     })
     .catch(err => console.log(err));
 };
@@ -318,7 +323,6 @@ let addServer = () => {
 const serverExplore = document.getElementById('explore');
 let serverExploreBox = document.querySelector(".serverExploreBox");
 let containerChannel = document.getElementById('.conteinerCanales');
-let containerChat = document.getElementById('.conteinerChat');
 
 let serversCargados = false;
 let visible = false;

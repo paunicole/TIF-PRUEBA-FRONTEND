@@ -30,7 +30,19 @@ function getProfile() {
                 document.getElementById("email").innerText = data.email;
                 document.getElementById("first_name").innerText = data.first_name;
                 document.getElementById("last_name").innerText = data.last_name;
-                document.getElementById("birthdate").innerText = data.birthdate;
+
+                //Formateo la Fecha
+                let originalDate = new Date(data.birthdate); // Convertir la fecha de texto a objeto Date 
+                let day = originalDate.getDate();            // Obtener el día del mes
+                let month = originalDate.getMonth();         // Obtener el mes
+                let year = originalDate.getFullYear();       // Obtener el año
+
+                let monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                let monthName = monthNames[month];
+                let formattedDate = `${day} de ${monthName} del ${year}`;
+
+                document.getElementById("birthdate").innerText = formattedDate;
+
                 datosUser= updateCampos(data.user_id,data.email,data.username,data.password,data.first_name,data.last_name,data.birthdate,data.avatar)
 
             });
@@ -197,7 +209,7 @@ function crearFomulario(divParent){
     const label5=document.createElement("label")
     label5.setAttribute("for","upBirthdate")
     const input5=document.createElement("input")
-    label5.textContent="Birthdate: "
+    label5.textContent="Cumpleaños: "
     input5.id="upBirthdate" 
     input5.name="upBirthdate"
     input5.setAttribute("type","Date")
