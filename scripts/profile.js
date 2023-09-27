@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
-    getProfile();
+    
 });
-
+getProfile();
 var datosUser;
 document.getElementById("logout").addEventListener("click", logout);
 
@@ -43,7 +43,7 @@ function getProfile() {
 
                 document.getElementById("birthdate").innerText = formattedDate;
 
-                datosUser= updateCampos(data.user_id,data.email,data.username,data.password,data.first_name,data.last_name,data.birthdate,data.avatar)
+                datosUser= mostrarCampos(data.user_id,data.email,data.username,data.password,data.first_name,data.last_name,data.birthdate,data.avatar)
 
             });
         } else {
@@ -81,7 +81,7 @@ function logout() {
 }
 
 // almacenar los datos del usuario
-function updateCampos(user_id,email,user,password,firstName,lastName,cumple, img){
+function mostrarCampos(user_id,email,user,password,firstName,lastName,cumple, img){
     user={"id":user_id,"e":email,"u":user,"p":password,"f":firstName,"l":lastName,"c":cumple,"i":img}
     return user
 }
