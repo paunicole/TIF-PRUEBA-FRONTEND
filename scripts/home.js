@@ -2,9 +2,10 @@
 
 window.addEventListener('load', function () {
     catchServers();
+    getProfile();
 });
 
-getProfile();
+
 
 console.log("holaaa channel")
 

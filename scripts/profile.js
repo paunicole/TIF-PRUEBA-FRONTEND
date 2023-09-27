@@ -44,7 +44,7 @@ function getProfile() {
         document.getElementById("message").innerHTML = "An error occurred.";
     });
 }
-var inputAvatar;
+//var inputAvatar;
 function logout() {
     const url = "http://127.0.0.1:5000/users/logout";
     
@@ -101,7 +101,7 @@ open.addEventListener('click', (event) => {
     document.getElementById("upAvatar").addEventListener("click",(eve)=>{
         eve.preventDefault()
         //crea el modal
-        modalAvatars(divParent)
+        //modalAvatars(divParent)
         document.getElementById("conteiner-avatars").style.display="block"
         //click en avatar dispara al input y va hacer que cambie el avatar
         document.getElementById("avatar0").addEventListener("click",()=>{
@@ -135,7 +135,7 @@ open.addEventListener('click', (event) => {
         const upApellido=document.getElementById("upApellido").value
         const upBirthdate=document.getElementById("upBirthdate").value
         // console.log("what is--",upEmail)
-        inputAvatar= document.getElementById("seleccion").value
+        const inputAvatar= document.getElementById("seleccion").value
 
         update(upUser,datosUser.p ,upEmail, upNombre , upApellido ,inputAvatar,upBirthdate)
     })
@@ -144,6 +144,7 @@ open.addEventListener('click', (event) => {
 function modalAvatars(divParent){
     const divA=document.createElement("div")
     divA.id="conteiner-avatars"
+    divA.style.display="none"
     divA.innerHTML=`<ul><li id="avatar0"><img src="/assets/avatar.png" widht="32px">
     <li id="avatar1"><img src="/assets/avatar1.png" widht="32px"></li>
     <li id="avatar2"><img src="/assets/avatar2.png" widht="32px"></li>
@@ -225,7 +226,7 @@ function crearFomulario(divParent){
     document.getElementById("upUser").placeholder=datosUser.u
     document.getElementById("upApellido").placeholder=datosUser.l
     
-    
+    modalAvatars(divParent)
 };
 
 // actualizar en la base de datos
