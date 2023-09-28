@@ -346,7 +346,7 @@ let addServer = () => {
 }
 
 
-// ======================== INSERTAR UN UN NUEVO SERVIDOR DEL EXPLORER========================
+// ======================== INSERTAR UN NUEVO SERVIDOR DESDE EL EXPLORER ========================
 
 let addServerExplore = (serverID) => {
     console.log("VINO POR ADD SERVER");
@@ -391,6 +391,17 @@ serverExplore.addEventListener('click', () => {
     visible = !visible;
 });
 
+const getServersCount = async (serverId) => {
+    let url = `http://127.0.0.1:5000/servers/count/${serverId}`;
+    const res = await fetch(url, {
+         method: 'GET',
+         credentials: 'include'
+    })
+    const data = await res.json();
+    return data.count;
+    
+};
+
 function showServersExplore() {
     fetch('http://127.0.0.1:5000/servers', {
         method: 'GET',
@@ -407,18 +418,35 @@ function showServersExplore() {
 
             // Crear elemento p para el nombre del servidor
             let serverExploreText = document.createElement("a");
-            serverExploreText.classList.add("serverExploreText");
+            serverExploreText.classList.add("categoryText");
             serverExploreText.textContent = server.name;
+
+            // Crear elemento p para el nombre del servidor
+            let serverSpan = document.createElement("span");
+            let serverDescription = `Descripción: ${server.description}`;
+            serverSpan.textContent = serverDescription;
+            serverSpan.classList.add("dueTaskSpan");
+
+            // Crear circulo con la cantidad de usuarios en el servidor
+            console.log(server.id_server)
+            const serverCount = await  getServersCount(server.server_id);
+            let serverCountCircle = document.createElement("div");
+            serverCountCircle.classList.add("taskCountCircle");
+            serverCountCircle.textContent = serverCount;
+
+            // Añadir elemetnos
+            serverExploreText.appendChild(document.createElement("br"));
+            serverExploreText.appendChild(serverSpan);
+            serverExploreText.appendChild(serverCountCircle);
             serverExploreBox.appendChild(serverExploreText);
 
             if (!serverExploreText.hasEventListeners) {
                 
                 serverExploreText.addEventListener('click', function(event) {
-                    console.log("CLICK EN N UN SERVER DE EXPLORER", server.server_id)
                     var resultado = window.confirm('¿Quieres unirte a ' + server.name + '?');
                     if (resultado === true) {
-                        console.log("DIJO QUE SII");
                         addServerExplore(server.server_id);
+                        location.reload(true);
                     } 
                 })
                 serverExploreText.hasEventListeners = true; // Marcar que se agregó el evento
