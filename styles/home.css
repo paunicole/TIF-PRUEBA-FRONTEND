@@ -1,9 +1,8 @@
 *{
-    /* height: 100vh;
-    width: 100%; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Onest', sans-serif;
   }
 
 .main-container{
@@ -13,7 +12,6 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-y: auto;
   position: sticky;
 }
 
@@ -21,17 +19,20 @@ ul{
   list-style: none;
 }
 
+#UserName {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .conteinerServers{
     background-color:  rgb(26, 86, 104);
     height: inherit;
     color: white ;
     width: 9%;
-    /* padding-top: 14px; */
     align-items: center;
     display: flex;
     flex-direction: column;
     min-width: 100px;
-    /* justify-content: center; */
 }
 
 .servers{
@@ -41,11 +42,7 @@ ul{
     flex-direction: column;
 }
 
-/* contenedor de servidores */
 .item-server{
-    /* padding: 7px; */
-    /* align-self: center; */
-    /* display: flex; */
     display: flex;
     justify-content: flex-start;
     
@@ -78,28 +75,26 @@ ul{
   min-width:120px;
 }
 
-/* link profile */
 #sendProfile{
   text-decoration: none;
   color : #fff;
 }
 
-/* icon + */
-
 .conteiner-icons{
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
 .icono:hover{
     cursor: pointer;
     width: 70px;
+    transition: .5s;
 }
 
 .icono{
     width:60px;
+    transition: .5s;
 }
 
 #iconUser{
@@ -120,11 +115,10 @@ ul{
     display: flex;
     flex-direction: column;
     height: inherit;
-    padding-left: 5px;
+    padding: 5px;
     min-width: 200px;
     height: 100vh;
     position: sticky;
-    /* height: inherit; */
 }
 
 .items-canal{
@@ -136,7 +130,6 @@ ul{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* height: 10vh; */
 }
 
 #newcanal:hover{
@@ -147,20 +140,12 @@ ul{
   height: 10vh;
 }
 
-/* chat */
-
-
-
 input{
-    /* position: absolute; */
     width: 150px;
 }
 
 #text{
-    /* display: flex;
-    flex-direction: column; */
     display: inline;
-    /* justify-content: flex-start; */
 }
 
 #item{
@@ -171,14 +156,12 @@ input{
     border-radius: 3px;
     padding-left: 15px ;
     margin: 6px 0 6px 6px;
-    /* text-align: center; */
 }
 
 #sub-content{
-    margin-left:10px;
+    margin-left: 10px;
     height: 7vh;
     justify-content: flex-end;
-    /* justify-content: end; */
 }
 
 #input{
@@ -194,7 +177,7 @@ input{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 80%; /* Altura máxima de la ventana emergente */
+    max-height: 80%;
     width: 300px;
     padding: 20px;
     background-color: antiquewhite;
@@ -219,23 +202,6 @@ input{
 
 /* ================ MODAL Channel ================ */
 
-/* .modalCanal{
-
-    display: none; 
-    position: fixed ;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-height: 80%; 
-    width: 300px;
-    padding: 20px;
-    background-color: antiquewhite;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-    z-index: 1000;
-  } */
-  /* CONTENIDO */
 .modalCanal .modalC {
     text-align: center;
 }
@@ -248,8 +214,6 @@ input{
     background-color: #011640;
 }
 
-/* ========= SERVIDORES, CANALES, MENSAJES ============= */
-
 .todoApp-Container{
   display: flex;
   width: 99%;
@@ -257,7 +221,7 @@ input{
   z-index: 99;
 }
 
-/* ===== SERVERS ===== */
+/* =========================== SERVIDORES ============================== */
 
 .serverBox{
   padding: 5px;
@@ -270,7 +234,6 @@ input{
   width: 100%;
   background-color: rgba(26, 187, 216, 0.247);
   font-size: 15px;
-  font-family: 'Prompt', sans-serif;
   margin: 5px;
   padding: 10px;
   border-radius: 10px;
@@ -281,25 +244,20 @@ input{
   transition: .5s;
 }
 
-.serverText:hover .taskCountCircle {
-  background-color: #444343;  /* Add the styles you want when hovering over .categoryText */
-  color: white;
-}
-
 .serverText:hover{
-  background-color: aquamarine;
-  color: black;
+  background-color: rgba(36, 219, 252, 0.514);
+  color: rgb(255, 255, 255);
   transition: .5s;
 }
 
 .noServers {
   font-size: 16px;
   font-weight: bold;
-  color: #ff0000; /* Cambia el color según tu preferencia */
+  color: #ff0000;
   margin: 10px 0;
 }
 
-/* ====================== CHANNELS ========================= */
+/* ====================== CANALES ========================= */
 
 .channelBox{
   padding: 5px;
@@ -312,7 +270,6 @@ input{
   width: 100%;
   background-color: rgba(107, 51, 238, 0.267);
   font-size: 15px;
-  font-family: 'Prompt', sans-serif;
   margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
@@ -330,25 +287,24 @@ input{
 .noChannels {
   font-size: 16px;
   font-weight: bold;
-  color: #ff0000; /* Cambia el color según tu preferencia */
+  color: #ff0000;
   margin: 10px 0;
 }
 
-/* ====================== CHANNEL ==================== */
+/* ====================== CHAT ==================== */
 
 .conteinerChat{
   width: 80%;
   height: inherit;
   min-width: 500px;
-  /* background-color:#000; */
-  /* background-color: rgb(196, 216, 216); */
+  background-color:#000;
+  background-color: rgb(196, 216, 216);
   position:sticky; 
 }
 
 #chat{
   display: flex;
   flex-direction: column;
-  /* margin:  50px auto; */
   height: 93vh;
   background-image: url("../assets/pngwing.png");
   background-repeat: no-repeat; 
@@ -356,9 +312,8 @@ input{
 }
 
 .chatBox{
-  padding: 50px;
-  width: 1220px;
-  /*max-height: 1000px;*/
+  padding: 50px 50px 0px 50px;
+  width: 1227px;
   height: 800px;
   overflow-y: scroll;
 }
@@ -390,9 +345,9 @@ input{
 
 .chatDate {
   font-size: 12px;
-  color: #666;
+  color: #1f1e1e;
   margin-left: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #535353;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -400,7 +355,7 @@ input{
 .noMessages {
   font-size: 30px;
   font-style: italic;
-  color: #888; /* Cambia el color según tu preferencia */
+  color: #000000; /* Cambia el color según tu preferencia */
   margin: 10px 0;
 }
 
@@ -433,10 +388,12 @@ input{
 }
 
 #empty {
-  background-color: #ff0000;
   font-weight: bold;
+  background-color: #000000;
+  color: #ffffff;
   font-size: 20px;
-  font-family: 'Prompt', sans-serif;
+  /* border-radius: 10px;
+  padding: 20px; */
 }
 
 .serverEmpty{
@@ -447,7 +404,7 @@ input{
 
 /* =============== CAJA PARA MANDAR MENSAJE =================== */
 .inputMessage {
-  width: 1180px;
+  width: 1170px;
   height: 1000px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -457,7 +414,6 @@ input{
 .input-container {
   display: flex;
   align-items: center;
-  padding: 10px;
 }
 
 #input {
@@ -465,7 +421,7 @@ input{
   border: 1px solid #ccc;
   border-radius: 3px;
   resize: none;
-  margin-right: 30px;
+  margin-right: 20px;
   margin-left: 20px;
 }
 
@@ -474,7 +430,7 @@ input{
   color: #fff;
   border: none;
   border-radius: 3px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   cursor: pointer;
 }
 

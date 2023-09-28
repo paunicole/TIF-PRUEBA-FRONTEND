@@ -1,5 +1,5 @@
 body{
-    font-family: 'Reggae One', cursive;
+    font-family: 'Onest', sans-serif;
     background-color: bisque;
 }
 
@@ -35,4 +35,18 @@ h1{
 
 button{
     margin-top: 5px;
+}
+
+#bton {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+}
+  
+#bton:hover {
+    background-color: #1a1919;
 }

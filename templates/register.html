@@ -3,44 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <!--  Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest&family=Open+Sans:ital,wght@0,500;1,700&display=swap" rel="stylesheet">
+    <!-- CSS externo -->
     <link rel="stylesheet" href="/styles/register.css">
+    <title>Registro</title>
 </head>
 <body>
-    <!-- <h1>Welcome!</h1> -->
-    <!-- crear cuenta
-    correo
-    name usu
-    nome person
-    ape person
-    contraseña
-    fechaNac
-confirmar -->
 
     <div class="conteiner">
         <h1>Crear cuenta</h1>
         <form id="myform" action="/register" method="post">
-            <label for="email">Correo electronico</label>
+            <label for="email">Correo electrónico</label>
             <input class="inputs" type="email" id="email" name="email" required>
+            <br>
             <label for="username">Nombre de usuario</label>
             <input class="inputs" type="text" id="username" name="username" required>
+            <br>
             <label for="first_name">Nombre</label>
             <input class="inputs" type="text" id="first_name" name="first_name" >
+            <br>
             <label for="last_name">Apellido</label>
             <input class="inputs" type="text" id="last_name" name="last_name" >
+            <br>
             <label for="password">Contraseña</label>
             <input class="inputs" id="password" name="password" type="password" required >
+            <br>
             <label for="birthdate">Fecha de nacimiento</label>
             <input class="inputs" id="birthdate" name="birthdate" type="date" required >
-
+            <br>
             <button id="bton" type="submit">Confirmar</button>
         </form>
     </div>
+
     <div id="message"></div>
 
+    <!-- JavaScript -->
     <script src="/scripts/register.js"></script>
 </body>
 </html>

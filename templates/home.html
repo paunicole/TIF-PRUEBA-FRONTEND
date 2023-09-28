@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest&family=Open+Sans:ital,wght@0,500;1,700&display=swap" rel="stylesheet">
+    <!-- CSS externo -->
     <link rel="stylesheet" href="/styles/home.css">
-    <title>Home</title>
+    <title>Discord</title>
 </head>
 <body>
 
@@ -22,15 +27,7 @@
                         <div class="serverBox"></div>
                     </div>
                     <!--
-                    <ul class="servidores">
-                        <li id="nameServidor">servidor 1</li>
-                         <li>2</li>
-                        <li>3 </li>
-                        <li>4 </li> 
-
-                    </ul>
-                    -->
-                    <!-- <ul class="edicion"> 
+                        <ul class="edicion"> 
                         <li><img class="editServi" id="call" src="tres-puntos.png" width="15px"></li>
                         <li><img class="editServi" src="tres-puntos.png" width="15px"></li>
                     </ul> -->
@@ -64,10 +61,9 @@
                     <form id="formAddServer"> <!-- method="post"-->
                         
                         <label for="nameS">Nombre: </label><br>
-                        <input  type="text" id="nameS" name="nameS" ><br>
+                        <input type="text" id="nameS" name="nameS" ><br>
                         <label for="descripcionS">Descripcion: </label><br>
-                        <input  type="text" id="descriptionS" name="descripcionS" ><br>
-                            
+                        <input type="text" id="descriptionS" name="descripcionS" ><br> 
                         <button class="btonAddServer" type="button">Enviar</button>
                     </form>
                     <button id="btonS">Cerrar</button>
@@ -130,13 +126,15 @@
                 <div class="input-container">
                     <!-- <input id="input" name="ingreso" type="text" placeholder="Escribe aqui..."> -->
                     <textarea id="input" name="ingreso" type="text" placeholder="Escribe aqui..." ></textarea>
-                    <button id="bton">Enviar</button>
+                    <button class="btonAddMessage" type="button" id="bton">Enviar</button>
                 </div>
             </div>
 
-        </div> 
+        </div>
+         
     </div>
 
+    <!-- JavaScript -->
     <script src="/scripts/home.js"></script>
 
 </body>

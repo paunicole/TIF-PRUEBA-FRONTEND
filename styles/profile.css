@@ -1,5 +1,5 @@
 body{
-    font-family: 'Reggae One', cursive;
+    font-family: 'Onest', sans-serif;
     background-color: bisque;
 }
 
@@ -9,7 +9,6 @@ h1{
 
 .conteiner{
     display: flex;
-    /* align-items: center; */
     flex-direction: column;
     padding: 30px;
     width: 40%;
@@ -42,24 +41,22 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 10px; /* Margen horizontal entre los botones */
+    margin: 0 10px;
 }
 
 .my-button:hover {
-background-color: #45a049;
+    background-color: #45a049;
 }
 
 .my-button:active {
-background-color: #3e8e41;
+    background-color: #3e8e41;
 }
 
 .buttons {
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    justify-content: center;
+    align-items: center;
 }
-
-/* modal user */
 
 .modal-container {
     display: none; 
@@ -67,7 +64,7 @@ background-color: #3e8e41;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 80%; /* Altura máxima de la ventana emergente */
+    max-height: 80%;
     width: 300px;
     padding: 20px;
     background-color: rgb(226, 222, 217,0.5);
@@ -80,10 +77,12 @@ background-color: #3e8e41;
 .modal{
     text-align: center;
 }
+
 #btonUpdateUser{
     background-color: #000;
     color:#fff
 }
+
 #close{
     border-radius: 5px;
     margin-top: 6px;
@@ -92,13 +91,13 @@ background-color: #3e8e41;
     background-color: #011640;
 }
 
-/* formulario updateUser */
 #updateUser{
     display: flex;
     flex-direction: column;
 }
+
 button#upAvatar{
-    background: #1F5F74;
+  background: #1F5F74;
   color: white;
   padding: 6px 20px;
   cursor: pointer;
@@ -113,31 +112,30 @@ button#send{
   border-radius: 3px;
 }
 
-/* contenedor de avatar */
 #conteiner-avatars{
     display: none; 
     position: fixed ;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 80%; /* Altura máxima de la ventana emergente */
+    max-height: 80%;
     width: 300px;
     padding: 20px;
     background-color: antiquewhite;
-    /* flex-direction: column; */
-    /* align-items: center; */
     border-radius: 8px;
     z-index: 1000;
     color:#000;
 }
+
 #conteiner-avatars ul li{
     list-style-type:none;
     display: inline;
 }
+
 #conteiner-avatars ul li img{
     width: 42px;
-    /* background-color: #011640; */
 }
+
 #conteiner-avatars ul li:hover{
     cursor:pointer;
 }

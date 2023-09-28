@@ -1,13 +1,9 @@
-// ======================== MOSTRAR MI PERFIL ========================
-
 window.addEventListener('load', function () {
-    catchServers();
     getProfile();
+    catchServers();
 });
 
-
-
-console.log("holaaa channel")
+// =========================== MOSTRAR MI PERFIL ===========================
 
 function getProfile() {
     const url = "http://127.0.0.1:5000/users/profile";
@@ -22,14 +18,10 @@ function getProfile() {
     .then(response => {
         if (response.status === 200) {
             return response.json().then(data => {
-                // Mostrar la imagen de avatar
-                // if( data.avatar!==""){
-                let avatarLink=`../assets/${data.avatar}`;
-                const iconUser=document.getElementById("iconUser");
-                iconUser.src=avatarLink;    
-                // console.data("home,",data)         
+                let avatarLink = `../assets/${data.avatar}`;
+                const iconUser = document.getElementById("iconUser");
+                iconUser.src = avatarLink;            
                 document.getElementById("UserName").innerText = data.username;
-                // console.data("home,",data)  
             });
         } else {
             return response.json().then(data => {
@@ -49,9 +41,10 @@ let chatBox = document.querySelector(".chatBox");
 let containerChat = document.getElementById('.conteinerChat');
 let serverBtnAdd = document.querySelector(".btonAddServer");
 const notServer = document.getElementById('empty');
-
 let inputMessage = document.querySelector(".inputMessage");
-inputMessage.style.display = 'none'
+
+inputMessage.style.display = 'none';
+notServer.style.display = 'none';
 
 let catchServers = () => {
     
@@ -61,20 +54,13 @@ let catchServers = () => {
         headers: {
             'Content-Type': 'application/json',
         },
-        credentials: 'include' // Importante estar por las sesiones
+        credentials: 'include'
     })
     .then(res => res.json())
     .then(async data => {
         if (data.length === 0) {
-
-            // No se encontraron servidores, muestra un mensaje
-            //const noServersMessage = document.createElement("p");
-            //noServersMessage.classList.add("noServers");
-            //noServersMessage.textContent = "No se encontraron servidores.";
-            //serverBox.appendChild(noServersMessage);
-            
-            // Muestro mensaje en la 3° columna
             notServer.style.display = 'block';
+
         } else {
 
             // Oculto mensaje en la 3° columna
@@ -85,7 +71,7 @@ let catchServers = () => {
                 // Crear elemento de texto para el nombre del servidor
                 let serverText = document.createElement("a");
                 serverText.classList.add("serverText");
-                //serverText.setAttribute("href", `home.html?server_id=${server.server_id}`);
+
                 serverText.setAttribute("data-server-id", server.server_id);
                 serverText.textContent = server.name;
                 
@@ -115,6 +101,8 @@ let catchServers = () => {
 // ======================== MOSTRAR CANALES ========================
 let channelBox = document.querySelector(".channelBox");
 let channelBtnAdd = document.querySelector(".btonAddChannel");
+let messageBtnAdd = document.querySelector(".btonAddMessage");
+let canalSeleccionado;
 
 let catchChannels = (serverID) => {
     let url = `http://127.0.0.1:5000/channels/${serverID}`;
@@ -128,7 +116,7 @@ let catchChannels = (serverID) => {
     .then(res => res.json())
     .then(data => {
         if (data.length === 0) {
-            console.log("NO HAY CANALES EN ", serverID)
+
             // Si no hay canales, muestra un mensaje de advertencia
             channelBox.innerHTML = ''
             const noChannelsMessage = document.createElement("p");
@@ -136,7 +124,7 @@ let catchChannels = (serverID) => {
             noChannelsMessage.textContent = "Aún no hay canales en este servidor";
             channelBox.appendChild(noChannelsMessage);
         } else {
-            console.log("SI HAY CANALES EN ", serverID)
+
             channelBox.innerHTML = ''
 
             // Si hay canales, crea contenedores para cada uno
@@ -146,12 +134,11 @@ let catchChannels = (serverID) => {
         }
 
         channelBtnAdd.addEventListener("click", () => addChannel(serverID));
+        
     })
 
     .catch(err => console.log(err));
 };
-
-let canalSeleccionado;
 
 let createChannelContainer = (channel) =>{
 
@@ -176,8 +163,10 @@ let createChannelContainer = (channel) =>{
             console.log("CANAL SELECCIONADO:", channel.channel_id)
             catchChats(channel.channel_id);
         });
+
         channelText.hasEventListeners = true; // Marcar que se agregó el evento
     }
+
 }
 
 let addChannel = (serverID) => {
@@ -214,10 +203,9 @@ let addChannel = (serverID) => {
     .catch(err => console.log(err));
 }
 
-// ======================== CHAT ====================
+// ======================== MOSTRAR EL CHAT ====================
 
 let catchChats = (channelID) => {
-    console.log("LLEGÓ A CATCHCHATS. Canal:", channelID)
     let url = `http://127.0.0.1:5000/messages/?channel_id=${channelID}`;
     fetch(url, {
         method: 'GET'
@@ -225,16 +213,16 @@ let catchChats = (channelID) => {
     .then(res => res.json())
     .then(data => {
         if (data.length === 0) {
-            console.log("NO HAY MENSAJES")
+            
             chatBox.innerHTML = ''
-
+            
             // Si no hay mensajes, muestra un mensaje de advertencia
             const noMessagesMessage = document.createElement("p");
             noMessagesMessage.classList.add("noMessages");
             noMessagesMessage.textContent = "Aún no hay mensajes en este canal";
-            chatBox.appendChild(noMessagesMessage);
+            chatBox.appendChild(noMessagesMessage);  
+        
         } else {
-            console.log("SI HAY MENSAJES")
             chatBox.innerHTML = ''
 
             // Si hay mensajes, crea contenedores para cada uno
@@ -243,6 +231,7 @@ let catchChats = (channelID) => {
             });
         }
         inputMessage.style.display = 'block'
+        messageBtnAdd.addEventListener("click", () => addMessage(canalSeleccionado));
     })
     .catch(err => console.log(err));
 };
@@ -285,7 +274,46 @@ let createChatContainer = (chat) =>{
     chatText.setAttribute("data-chat-id", chat.message_id);
 }
 
-// ======================== INSERTAR UN NUEVO SERVIDOR A LA BASE DE DATOS ========================
+// ======================== AGREGAR NUEVO MENSAJE ====================
+
+
+let addMessage = (channelID) => {
+
+    // Obtener el el elemento input por su id
+    var inputMessage = document.getElementById("input");
+
+     // Obtener el valor del input
+    var valorMessage = inputMessage.value;
+
+    if (valorMessage.trim() === "") {
+        return;
+    }
+
+    console.log(valorMessage)
+    console.log(channelID)
+
+    let message = {
+        message: valorMessage,
+        channel_id: channelID
+    };
+
+    fetch("http://127.0.0.1:5000/messages/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message),
+        credentials: 'include',
+    })
+    .then(res => res.json())
+    .then(data => {
+        location.reload();
+    })
+    .catch(err => console.log(err));
+}
+
+
+// ======================== CREAR UN NUEVO SERVIDOR ========================
 
 let addServer = () => {
     
@@ -329,29 +357,30 @@ let visible = false;
 
 serverExplore.addEventListener('click', () => {
     if (!serversCargados) { //Si los servidores aun no están cargdados, los cargo
-        addServersExplore();
+        showServersExplore();
         serversCargados = true;
     }
     if(visible){
         serverExploreBox.style.display = 'none';
-        notServer.style.display = 'block';
     } else{
         serverExploreBox.style.display = 'grid';
     }
     visible = !visible;
 });
 
-function addServersExplore() {
+function showServersExplore() {
     fetch('http://127.0.0.1:5000/servers', {
         method: 'GET',
         credentials: 'include'
     })
     .then(res => res.json())
     .then(async data => {
+        //Ocultar contenedores
+        notServer.style.display = 'none';
+        chatBox.style.display = 'none';
+        inputMessage.style.display = 'none';
 
         for (let server of data) {
-            //Ocultar mensaje de unirse a un servidor
-            notServer.style.display = 'none';
 
             // Crear elemento p para el nombre del servidor
             let serverExploreText = document.createElement("a");
@@ -396,35 +425,35 @@ btm.addEventListener('click', () => {
 
 // ====================== CHAT ============================
 
-let input= document.getElementById("input")
-let boton= document.getElementById("bton")
+// let input= document.getElementById("input")
+// let boton= document.getElementById("bton")
 
-let ul= document.getElementById("text")
-let conteiner= document.getElementsByClassName("conteinerChat")
-let div=document.getElementById("chat")
+// let ul= document.getElementById("text")
+// let conteiner= document.getElementsByClassName("conteinerChat")
+// let div=document.getElementById("chat")
 
 
-boton.addEventListener("click", () => {
-    const mensaje = input.value.trim();
+// boton.addEventListener("click", () => {
+//     const mensaje = input.value.trim();
 
-      if (mensaje !== "") {
-        let element= document.createElement("li")
-    element.innerHTML+=input.value
-    element.setAttribute("id","item")
-    // lo agregamos como hijo y comienza a tomar los valor que tiene li
-    // en la hoja de estilos
-    ul.appendChild(element)
-    console.log(input.value)
-    input.value=""
-      }
-});
+//       if (mensaje !== "") {
+//         let element= document.createElement("li")
+//     element.innerHTML+=input.value
+//     element.setAttribute("id","item")
+//     // lo agregamos como hijo y comienza a tomar los valor que tiene li
+//     // en la hoja de estilos
+//     ul.appendChild(element)
+//     console.log(input.value)
+//     input.value=""
+//       }
+// });
 
-input.addEventListener("keypress", (event) => {
-      if (event.key === "Enter") {
-        boton.click();
-      }
-});
+// input.addEventListener("keypress", (event) => {
+//       if (event.key === "Enter") {
+//         boton.click();
+//       }
+// });
 
-// conteiner.appendChild(div)
-// document.body.appendChild(conteiner)
+// ====================== AGREGAR UN MENSAJE ============================
+
 
