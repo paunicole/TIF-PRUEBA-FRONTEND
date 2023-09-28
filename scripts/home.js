@@ -346,6 +346,29 @@ let addServer = () => {
 }
 
 
+// ======================== INSERTAR UN UN NUEVO SERVIDOR DEL EXPLORER========================
+
+let addServerExplore = (serverID) => {
+    console.log("VINO POR ADD SERVER");
+    let server = {
+         server_id: serverID
+    };
+    console.log(serverID);
+    fetch("http://127.0.0.1:5000/servers/explore", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(server),
+        credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(data => {
+        location.reload();
+    })
+    .catch(err => console.log(err));
+}
+
 // ====================================== EXPLORAR SERVIDORES =====================================
 
 const serverExplore = document.getElementById('explore');
@@ -387,6 +410,19 @@ function showServersExplore() {
             serverExploreText.classList.add("serverExploreText");
             serverExploreText.textContent = server.name;
             serverExploreBox.appendChild(serverExploreText);
+
+            if (!serverExploreText.hasEventListeners) {
+                
+                serverExploreText.addEventListener('click', function(event) {
+                    console.log("CLICK EN N UN SERVER DE EXPLORER", server.server_id)
+                    var resultado = window.confirm('¿Quieres unirte a ' + server.name + '?');
+                    if (resultado === true) {
+                        console.log("DIJO QUE SII");
+                        addServerExplore(server.server_id);
+                    } 
+                })
+                serverExploreText.hasEventListeners = true; // Marcar que se agregó el evento
+            }
         }
     })
     .catch(err => console.log(err));
