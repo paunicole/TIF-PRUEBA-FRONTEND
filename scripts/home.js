@@ -237,6 +237,10 @@ let catchChats = (channelID) => {
 };
 
 let createChatContainer = (chat) =>{
+
+    let cont = document.createElement("div");
+    cont.classList.add("contMessage");
+
     // Crear elemento img para el avatar del usuario
     let chatAvatar = document.createElement("img");
     chatAvatar.classList.add("chatAvatar");
@@ -263,15 +267,16 @@ let createChatContainer = (chat) =>{
 
     // Crear elemento de texto p para el mensaje
     let chatText = document.createElement("p");
-    chatText.classList.add("chatText");
     chatText.textContent = chat.message;
 
     // Añadir elementos
-    chatBox.appendChild(chatAvatar);
-    chatBox.appendChild(chatUser);
-    chatBox.appendChild(chatDate);
-    chatBox.appendChild(chatText);
-    chatText.setAttribute("data-chat-id", chat.message_id);
+    cont.appendChild(chatAvatar);
+    cont.appendChild(chatUser);
+    cont.appendChild(chatDate);
+    cont.appendChild(document.createElement("br"));
+    cont.appendChild(document.createElement("br"));
+    cont.appendChild(chatText);
+    chatBox.appendChild(cont);
 }
 
 // ======================== AGREGAR NUEVO MENSAJE ====================
@@ -455,6 +460,37 @@ function showServersExplore() {
     })
     .catch(err => console.log(err));
 };
+
+// ======================== BUSCAR SERVIDOR ===================================
+
+// const inputBuscador = document.getElementById('buscador');
+
+
+// // Agregar un evento de escucha al campo de búsqueda
+// inputBuscador.addEventListener('input', function () {
+//     console.log("ESCRIBIO")
+//     const textoBusqueda = inputBuscador.value.toLowerCase();
+
+//     // Filtrar y mostrar los servidores que coinciden con el texto de búsqueda
+//     servidores.forEach(function (servidor) {
+//         const nombreServidor = servidor.name.toLowerCase();
+
+//         if (textoBusqueda != ''){
+//             if (nombreServidor.includes(textoBusqueda)) {
+//                 // Mostramos
+//                 servidor.style.display = 'block';
+//             } else {
+//                 // Sin resultados de la busqueda
+//                 const notExist = document.createElement("p");
+//                 notExist.classList.add("noMessages");
+//                 notExist.textContent = "Sin resultados";
+//                 serverExploreBox.appendChild(notExist);  
+//             }
+//         } else {
+//             showServersExplore()
+//         }
+//     });
+// });
 
 // ======================== MODALES =========================
 
