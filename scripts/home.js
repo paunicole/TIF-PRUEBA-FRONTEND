@@ -240,6 +240,7 @@ let createChatContainer = (chat) =>{
 
     let cont = document.createElement("div");
     cont.classList.add("contMessage");
+    cont.setAttribute("data-chat-id", chat.message_id);//message_id
 
     // Crear elemento img para el avatar del usuario
     let chatAvatar = document.createElement("img");
@@ -277,7 +278,39 @@ let createChatContainer = (chat) =>{
     cont.appendChild(document.createElement("br"));
     cont.appendChild(chatText);
     chatBox.appendChild(cont);
+    modalM(cont)
 }
+var idMessage;
+// ======================== AGREGAR NUEVO MENSAJE ====================
+function modalM(chatText){
+    //editar o eliminar mensaje
+
+    chatText.addEventListener("click",()=>{
+        //traemos es valor (que eria el id del message)
+        idMessage=chatText.getAttribute("data-chat-id")
+        console.log(" atributo data-chat-id-->",idMessage)
+        let mMensaje= document.getElementById("modalDeleteMessage")
+        mMensaje.style.display="flex"
+        //salir del modal
+        document.getElementById("xClose").addEventListener("click",()=>{
+            mMensaje.style.display="none"
+        });
+        
+        //eliminar mensaje
+        document.getElementById("deleteMessage").addEventListener("click", ()=>{
+            eliminarMensaje(mMensaje)
+
+        });
+
+        //editar mensaje
+        document.getElementById("ChangeMessage").addEventListener("click", ()=>{
+            editarMensaje(mMensaje)
+
+        });
+
+    });
+}
+
 
 // ======================== AGREGAR NUEVO MENSAJE ====================
 
@@ -525,35 +558,86 @@ btm.addEventListener('click', () => {
 
 // ====================== CHAT ============================
 
-// let input= document.getElementById("input")
-// let boton= document.getElementById("bton")
-
-// let ul= document.getElementById("text")
-// let conteiner= document.getElementsByClassName("conteinerChat")
-// let div=document.getElementById("chat")
-
-
-// boton.addEventListener("click", () => {
-//     const mensaje = input.value.trim();
-
-//       if (mensaje !== "") {
-//         let element= document.createElement("li")
-//     element.innerHTML+=input.value
-//     element.setAttribute("id","item")
-//     // lo agregamos como hijo y comienza a tomar los valor que tiene li
-//     // en la hoja de estilos
-//     ul.appendChild(element)
-//     console.log(input.value)
-//     input.value=""
-//       }
-// });
-
-// input.addEventListener("keypress", (event) => {
-//       if (event.key === "Enter") {
-//         boton.click();
-//       }
-// });
-
 // ====================== AGREGAR UN MENSAJE ============================
 
+//eliminar mensaje
+function eliminarMensaje(div){
+    div.style.display="none";
+    // alert("eliminando mensaje")
+    const url = `http://127.0.0.1:5000/messages/delete/${idMessage}`;
+    
+    fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            return response.json().then(data => {
+                alert(data.message)
+                location.reload()
+            });
+        }else if(response.status === 403) {
+            return response.json().then(data => {
+                alert(data.message) 
+                // window.location.href="home.html"
+                location.reload()
+            });
+        }
+    })
+}
 
+//editar mensaje
+function editarMensaje(div){
+     //MISMO DIV DE EDICION MENSAJE 
+    document.getElementById("deleteMessage").style.display="none";
+    document.getElementById("ChangeMessage").style.display="none";
+    let descri=document.createElement("input")
+    descri.id="upDescri"
+    let sendDescri=document.createElement("button")
+    sendDescri.id="sendDescri"
+    sendDescri.innerText="Enviar"
+
+    div.appendChild(descri)
+    div.appendChild(sendDescri)
+
+    document.getElementById("sendDescri").addEventListener("click",()=>{
+        div.style.display="none";
+        // alert("editando mensaje")
+        let msj=document.getElementById("upDescri").value
+        console.log(msj ==="")//true
+        if (msj!=""){
+            const url = `http://127.0.0.1:5000/messages/${idMessage}/${msj}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json().then(data => {
+                        alert(data.message) 
+                        window.location.href="home.html"
+                    });
+                }
+                else if(response.status === 403) {
+                    return response.json().then(data => {
+                        alert(data.message) 
+                        window.location.href="home.html"
+                    });
+                }
+                
+            }).catch(err  =>{
+                alert(err)
+                location.reload()
+            });
+        }else{
+            location.reload()
+        }
+        
+    })
+}
