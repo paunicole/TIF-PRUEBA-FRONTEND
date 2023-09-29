@@ -1,32 +1,45 @@
 body{
     font-family: 'Onest', sans-serif;
-    background-color: bisque;
+    background: rgba(7,4,25,1);
+    background-image: url("../assets/Mini\ logo.jpg");
+    background-repeat: no-repeat; 
+    background-position: left;
+    height: 5vh;
 }
 
 h1{
-    font-size: 30px;
+    font-size: 40px;
+    color: rgba(255,255,255,1);
 }
 
 .conteiner{
     display: flex;
     /* align-items: center; */
     flex-direction: column;
-    padding: 30px;
+    padding: 20px;
     width: 40%;
     align-items: center;
     margin:110px auto;
-    border-radius: 5px;
-    background-color: rgb(146, 92, 92);
+    /* border-radius: 5px; */
+    background-color: rgb(58, 38, 155);
+    color: rgba(255, 255, 255, 1);
+    font-size: 25px;
+    border-radius: 50px;
 }
 
 #myform{
     display: inherit;
     flex-direction: inherit;
     align-items: center;
+    border-radius: 5px;
+    /* font-size: 22px; */
 }
 
 .inputs{
-    width: 240px;
+    width: 280px;
+    height: 25px;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 #select{
@@ -45,8 +58,11 @@ button{
     padding: 5px 10px;
     cursor: pointer;
     width: 100%;
+    border-radius: 100px;
+    font-size: 20px;
+    
 }
   
 #bton:hover {
-    background-color: #1a1919;
+    background-color: #f1eded57;
 }

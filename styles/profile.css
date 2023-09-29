@@ -1,6 +1,13 @@
 body{
     font-family: 'Onest', sans-serif;
-    background-color: bisque;
+    /* background-color: bisque; */
+    background: rgba(7,4,25,1);
+    background-image: url("../assets/Mini\ logo.jpg");
+    background-repeat: no-repeat; 
+    background-position: left;
+    height: 10vh;
+    /* border-radius: 50px; */
+    
 }
 
 h1{
@@ -15,7 +22,13 @@ h1{
     align-items: center;
     margin: 50px auto;
     border-radius: 5px;
-    background-color: rgb(146, 92, 92);
+    /* background-color: rgb(146, 92, 92); */
+    background: rgba(58,38,155,1);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color:#fff;
 }
 
 #myform{
@@ -36,12 +49,18 @@ button{
 
 .my-button {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    /* background-color: #4CAF50; */
+    background: #e4dede;
+    color: rgb(10, 10, 10);
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
     cursor: pointer;
     margin: 0 10px;
+    border-style: solid;
 }
 
 .my-button:hover {
@@ -102,6 +121,14 @@ button#upAvatar{
   padding: 6px 20px;
   cursor: pointer;
   border-radius: 3px;
+  border-color: #fff;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+#upAvatar:hover {
+    background-color: #a0ada1;
 }
 
 button#send{
@@ -110,6 +137,15 @@ button#send{
   padding: 6px 20px;
   cursor: pointer;
   border-radius: 3px;
+  border-color: #e4dede;
+  border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+#send:hover {
+    background-color: #45a049;
 }
 
 #conteiner-avatars{

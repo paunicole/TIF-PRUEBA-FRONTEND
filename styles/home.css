@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Onest', sans-serif;
+    
   }
 
 .main-container{
@@ -25,7 +26,7 @@ ul{
 }
 
 .conteinerServers{
-    background-color:  rgb(26, 86, 104);
+    background-color:  rgb(228, 231, 231);
     height: inherit;
     color: white ;
     width: 9%;
@@ -33,6 +34,7 @@ ul{
     display: flex;
     flex-direction: column;
     min-width: 100px;
+    /* border-radius: 50px; */
 }
 
 .servers{
@@ -67,23 +69,29 @@ ul{
 
 .conteinerUser{
   height: 10vh;
-  background-color: rgb(153, 86, 131);
+  background-color: rgb(74, 21, 188);
   display: flex;
   
   flex-direction: column;
   align-items: center ;
   min-width:120px;
+  border-radius: 25px;
+  /* font-size: 20px; */
+
 }
 
 #sendProfile{
   text-decoration: none;
   color : #fff;
+  margin-top: 10px;
+  /* font-size: 20px; */
 }
 
 .conteiner-icons{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px;
 }
 
 .icono:hover{
@@ -99,6 +107,7 @@ ul{
 
 #iconUser{
     margin-top: -20px;
+    margin-bottom: 8px;
 }
 
 .conteinerUser:hover{
@@ -150,8 +159,8 @@ input{
 
 #item{
     list-style-type: none;
-    color:rgb(2, 2, 2);
-    background-color: #e4dddd;
+    color:rgb(2, 2, 2);/*2,2,2*/
+    background-color: #e4dddd; /*#e4dddd*/
     opacity: 0.59;
     border-radius: 3px;
     padding-left: 15px ;
@@ -180,12 +189,17 @@ input{
     max-height: 80%;
     width: 300px;
     padding: 20px;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite;  */
+    background-color: rgb(58, 38, 155);
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
     z-index: 1000;
-    color:#000;
+    color: #fff; /*#000*/
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #fff;
+
 }
 
 .modalServer .modalS{
@@ -198,7 +212,13 @@ input{
   color: #fff;
   background-color: #000;
   margin-bottom: 4px;
+  border-radius: 100px;
+  font-size: 17px;
 }
+#newcanal:hover {
+  background-color: #f1eded57;
+}
+
 
 /* ================ MODAL Channel ================ */
 
@@ -211,7 +231,20 @@ input{
     margin-top: 6px;
     padding: 7px;
     color:#fff;
-    background-color: #011640;
+    /* background-color: #011640; */
+    background: #000;
+    border-radius: 100px;
+    font-size: 16px;
+}
+
+#btonC:hover {
+  background-color: #f1eded57;
+}
+#close:hover {
+  background-color: #f1eded57;
+}
+#btonS:hover {
+  background-color: #f1eded57;
 }
 
 .todoApp-Container{
@@ -232,7 +265,8 @@ input{
 .serverText{
   display: block;
   width: 100%;
-  background-color: rgba(26, 187, 216, 0.247);
+  /* background-color: rgba(26, 187, 216, 0.247); */
+  background: rgba(58, 38, 155, 0.247);
   font-size: 15px;
   margin: 5px;
   padding: 10px;
@@ -249,7 +283,7 @@ input{
   color: rgb(255, 255, 255);
   transition: .5s;
 }
-
+/*Colores del mensaje sin server*/
 .noServers {
   font-size: 16px;
   font-weight: bold;
@@ -283,7 +317,7 @@ input{
   color: black;
   transition: .5s;
 }
-
+/*Para colores de no canal*/
 .noChannels {
   font-size: 16px;
   font-weight: bold;
@@ -298,26 +332,27 @@ input{
   height: inherit;
   min-width: 500px;
   background-color:#000;
-  background-color: rgb(196, 216, 216);
+  /* background-color: rgb(196, 216, 216); */
+  background: rgba(7,4,25,1);
   position:sticky; 
 }
-
+/*Para la imagen del fondo*/
 #chat{
   display: flex;
   flex-direction: column;
   height: 93vh;
-  background-image: url("../assets/pngwing.png");
+  background-image: url("../assets/Logo.jpg");
   background-repeat: no-repeat; 
   background-position: center;
 }
 
 .chatBox{
   padding: 50px 50px 0px 50px;
-  width: 1227px;
+  /* width: 1227px; */
   height: 800px;
   overflow-y: scroll;
 }
-
+/*No se para que sirve*/
 .chatText{
   width: 100%;
   background-color: rgb(107, 51, 238);
@@ -330,6 +365,7 @@ input{
   transition: .5s;
   cursor: pointer;
   color: white;
+  /* color:#000; */
  }
 
 .chatAvatar {
@@ -338,7 +374,7 @@ input{
 
 .chatUsername {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
   color: #007bff;
   margin-right: 10px;
   margin-left: 10px;
@@ -356,7 +392,7 @@ input{
 .noMessages {
   font-size: 30px;
   font-style: italic;
-  color: #000000; /* Cambia el color según tu preferencia */
+  color: #e14444;/* Cambia el color según tu preferencia */
   margin: 10px 0;
 }
 
@@ -391,6 +427,7 @@ input{
 #empty {
   font-weight: bold;
   background-color: #000000;
+  /* background-color: #0056b3; */
   color: #ffffff;
   font-size: 20px;
   /* border-radius: 10px;
@@ -409,7 +446,8 @@ input{
   height: 1000px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
+  background-color: rgb(58, 38, 155);
 }
 
 .input-container {
@@ -427,12 +465,13 @@ input{
 }
 
 #bton {
-  background-color: #007bff;
+  background-color: #000000;
   color: #fff;
   border: none;
   border-radius: 3px;
   padding: 5px 5px;
   cursor: pointer;
+  border-radius: 100px;
 }
 
 #bton:hover {
@@ -457,6 +496,7 @@ input{
 .categoryText:hover .taskCountCircle {
   background-color: #444343;  /* Add the styles you want when hovering over .categoryText */
   color: white;
+  /* color:#007bff; */
 }
 
 .categoryText{
@@ -488,7 +528,8 @@ input{
 .contMessage{
   display: block;
   width: 97%;
-  background-color: rgb(68, 67, 67);
+  /* background-color: rgb(68, 67, 67); */
+  background: rgb(58, 38, 155);
   font-size: 17px;
   font-family: 'Prompt', sans-serif;
   margin: 10px;
@@ -499,6 +540,8 @@ input{
   text-decoration: none;
   color: white;
   transition: .5s;
+  border-style: solid;
+  border-color: #ffffff;
 }
 
 /* ====================== modal para eliminar mensaje ======================*/
@@ -511,12 +554,15 @@ div#modalDeleteMessage{
     max-height: 80%;
     width: 200px;
     padding: 10px;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    background: rgb(58, 38, 155);
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
     z-index: 1000;
     color:#000;
+    border-style: solid;
+    border-color: #fff;
 }
 
 span#xClose{

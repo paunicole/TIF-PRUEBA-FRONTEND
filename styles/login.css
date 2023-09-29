@@ -1,32 +1,45 @@
 body{
     font-family: 'Onest', sans-serif;
-    background-color: bisque;
+    background: rgba(7,4,25,1);
+    background-image: url("../assets/Mini\ logo.jpg");
+    background-repeat: no-repeat; 
+    background-position: left;
+    height: 2vh;
 }
 
 h1{
-    font-size: 30px;
+    font-size: 40px;
+    color: rgba(255,255, 255,1);
 }
 
 #conteiner{
     text-align: center;
     display: flex;
     flex-direction: column;
-    background-color: rgb(146, 92, 92);
+    background: rgba(58,38,155,1);
+    opacity: 1;
     width: 40%;
+    /* height: 50%; */
     margin:150px auto;
     border-radius: 5px;
     padding: 30px ;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 25px;
 }
 
 #bton{
-    margin: 5px;
+    margin: 10px;
     width: 11rem;
     background-color: black;
     color:rgb(245, 245, 245);
 }
 
 a{
-    color:rgb(25, 18, 122) ;
+    color:rgb(59, 88, 252) ;
 }
 
 #loginForm{
@@ -37,14 +50,15 @@ a{
 }
 
 #bton {
-    background-color: #000000;
-    color: #fff;
+    background-color: #070202f3;
+    color: #fffcfc;
     border: none;
-    border-radius: 3px;
+    border-radius: 100px;
     padding: 5px 10px;
     cursor: pointer;
+    font-size: 20px;
   }
   
   #bton:hover {
-    background-color: #1a1919;
+    background-color: #f1eded57;
   }
